@@ -284,13 +284,13 @@
         
           
             <hr>
-<h2 id="title-插件失效解决办法"><a href="#title-插件失效解决办法" class="headerlink" title="title:插件失效解决办法"></a>title:插件失效解决办法</h2><blockquote>
+<h2 id="title-插件失效解决办法"><a href="#title-插件失效解决办法" class="headerlink" title=" title:插件失效解决办法"></a> title:插件失效解决办法</h2><blockquote>
 <p>1.打开终端，输入以下命令：</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults <span class="built_in">read</span> /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</span><br></pre></td></tr></table></figure>
 <p>2.获取到DVTPlugInCompatibilityUUID，然后:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add 9F75337B-21B4-4ADC-B558-F9CADF7073A7</span><br></pre></td></tr></table></figure>
-<p>3.详细见下图：<br>/Users/zhaochen/Desktop/test.png</p>
+<p>3.详细见下图：</p>
 
           
         
