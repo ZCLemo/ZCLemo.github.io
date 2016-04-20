@@ -283,9 +283,10 @@
       
         
           
-            <h3 id="1-打开终端，输入以下命令："><a href="#1-打开终端，输入以下命令：" class="headerlink" title="1.打开终端，输入以下命令："></a>1.打开终端，输入以下命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ defaults <span class="built_in">read</span> /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</span><br></pre></td></tr></table></figure>
-<h3 id="2-获取到DVTPlugInCompatibilityUUID，然后"><a href="#2-获取到DVTPlugInCompatibilityUUID，然后" class="headerlink" title="2.获取到DVTPlugInCompatibilityUUID，然后:"></a>2.获取到DVTPlugInCompatibilityUUID，然后:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add 9F75337B-21B4-4ADC-B558-F9CADF7073A7</span><br></pre></td></tr></table></figure>
-<h3 id="3-详细见下图："><a href="#3-详细见下图：" class="headerlink" title="3.详细见下图："></a>3.详细见下图：</h3>
+            <h3 id="1-打开终端，输入以下命令："><a href="#1-打开终端，输入以下命令：" class="headerlink" title="1.打开终端，输入以下命令："></a>1.打开终端，输入以下命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ defaults <span class="built_in">read</span> /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</span><br></pre></td></tr></table></figure>
+<h3 id="2-获取到DVTPlugInCompatibilityUUID，然后"><a href="#2-获取到DVTPlugInCompatibilityUUID，然后" class="headerlink" title="2.获取到DVTPlugInCompatibilityUUID，然后:"></a>2.获取到DVTPlugInCompatibilityUUID，然后:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add 9F75337B-21B4-4ADC-B558-F9CADF7073A7</span><br></pre></td></tr></table></figure>
+<h3 id="3-详细见下图："><a href="#3-详细见下图：" class="headerlink" title="3.详细见下图："></a>3.详细见下图：</h3><p><a href="http://s7.sinaimg.cn/large/003mA7ZIgy6YF93Uf5406&amp;690" target="_blank" rel="external">http://s7.sinaimg.cn/large/003mA7ZIgy6YF93Uf5406&amp;690</a></p>
+
           
         
       
