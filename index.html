@@ -284,6 +284,7 @@
         
           
             <h3 id="当我们升级Xcode的时候，会经常遇到插件失效的问题，下面给出了解决方案。"><a href="#当我们升级Xcode的时候，会经常遇到插件失效的问题，下面给出了解决方案。" class="headerlink" title="当我们升级Xcode的时候，会经常遇到插件失效的问题，下面给出了解决方案。"></a>当我们升级Xcode的时候，会经常遇到插件失效的问题，下面给出了解决方案。</h3><h4 id="第一步：打开终端，输入以下命令："><a href="#第一步：打开终端，输入以下命令：" class="headerlink" title="第一步：打开终端，输入以下命令："></a>第一步：打开终端，输入以下命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ defaults <span class="built_in">read</span> /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</span><br></pre></td></tr></table></figure>
+<h4 id="第二步：获取到DVTPlugInCompatibilityUUID，然后"><a href="#第二步：获取到DVTPlugInCompatibilityUUID，然后" class="headerlink" title="第二步：获取到DVTPlugInCompatibilityUUID，然后"></a>第二步：获取到DVTPlugInCompatibilityUUID，然后</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add 9F75337B-21B4-4ADC-B558-F9CADF7073A7</span><br></pre></td></tr></table></figure>
           
         
       
