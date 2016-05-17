@@ -1,0 +1,561 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x4ECA;&amp;#x5929;&amp;#x5728;&amp;#x91CD;&amp;#x6784;&amp;#x516C;&amp;#x53F8;&amp;#x4EE5;&amp;#x524D;&amp;#x7684;&amp;#x4EE3;&amp;#x7801;&amp;#x65F6;&amp;#xFF0C;&amp;#x7531;&amp;#x4E8E;&amp;#x516C;&amp;#x53F8;&amp;#x7684;&amp;#x9700;&amp;#x6C42;&amp;#xFF0C;&amp;#x5F53;&amp;#x4ECE;&amp;#x4E00;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="block中调用对象的实例变量导致循环引用">
+<meta property="og:url" content="http://www.ZCLemo.com/2016/05/17/WeakSelf/index.html">
+<meta property="og:site_name" content="ZCLemo的学习领域">
+<meta property="og:description" content="&amp;#x4ECA;&amp;#x5929;&amp;#x5728;&amp;#x91CD;&amp;#x6784;&amp;#x516C;&amp;#x53F8;&amp;#x4EE5;&amp;#x524D;&amp;#x7684;&amp;#x4EE3;&amp;#x7801;&amp;#x65F6;&amp;#xFF0C;&amp;#x7531;&amp;#x4E8E;&amp;#x516C;&amp;#x53F8;&amp;#x7684;&amp;#x9700;&amp;#x6C42;&amp;#xFF0C;&amp;#x5F53;&amp;#x4ECE;&amp;#x4E00;">
+<meta property="og:updated_time" content="2016-05-17T09:33:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="block中调用对象的实例变量导致循环引用">
+<meta name="twitter:description" content="&amp;#x4ECA;&amp;#x5929;&amp;#x5728;&amp;#x91CD;&amp;#x6784;&amp;#x516C;&amp;#x53F8;&amp;#x4EE5;&amp;#x524D;&amp;#x7684;&amp;#x4EE3;&amp;#x7801;&amp;#x65F6;&amp;#xFF0C;&amp;#x7531;&amp;#x4E8E;&amp;#x516C;&amp;#x53F8;&amp;#x7684;&amp;#x9700;&amp;#x6C42;&amp;#xFF0C;&amp;#x5F53;&amp;#x4ECE;&amp;#x4E00;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> block中调用对象的实例变量导致循环引用 | ZCLemo的学习领域 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZCLemo的学习领域</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">有时候，静下心来学习是一种享受！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://dn-zclemo.qbox.me/me.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                block中调用对象的实例变量导致循环引用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-17T17:33:13+08:00" content="2016-05-17">
+              2016-05-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="&#x4ECA;&#x5929;&#x5728;&#x91CD;&#x6784;&#x516C;&#x53F8;&#x4EE5;&#x524D;&#x7684;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x7531;&#x4E8E;&#x516C;&#x53F8;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x5F53;&#x4ECE;&#x4E00;&#x4E2A;&#x5F53;&#x524D;&#x9875;&#x9762;&#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x8981;&#x7EC8;&#x6B62;&#x8BE5;&#x9875;&#x9762;&#x7684;&#x6240;&#x6709;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x3002;&#x4E8E;&#x662F;&#x6211;&#x5728;dealloc&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x53D6;&#x6D88;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x5728;&#x5B9E;&#x9645;&#x7684;&#x64CD;&#x4F5C;&#x4E2D;&#x5374;&#x53D1;&#x73B0;&#xFF0C;dealloc&#x65B9;&#x6CD5;&#x5728;&#x9000;&#x51FA;&#x9875;&#x9762;&#x65F6;&#x88AB;&#x6CA1;&#x6709;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x7B49;&#x5230;&#x4E86;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x7ED3;&#x675F;&#x540E;&#x624D;&#x4F1A;&#x8C03;&#x7528;&#x3002;&#x7136;&#x540E;&#x6211;&#x60F3;&#x5230;&#x4E86;&#x5E94;&#x8BE5;&#x662F;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x4E2D;block&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x3002;&#x6700;&#x540E;&#x6211;&#x53D1;&#x73B0;&#x516C;&#x53F8;&#x4EE5;&#x524D;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0B;&#x5212;&#x7EBF;&#x7684;&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x3002;&#x6BD4;&#x5982;&#xFF1A;"><a href="#&#x4ECA;&#x5929;&#x5728;&#x91CD;&#x6784;&#x516C;&#x53F8;&#x4EE5;&#x524D;&#x7684;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x7531;&#x4E8E;&#x516C;&#x53F8;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x5F53;&#x4ECE;&#x4E00;&#x4E2A;&#x5F53;&#x524D;&#x9875;&#x9762;&#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x8981;&#x7EC8;&#x6B62;&#x8BE5;&#x9875;&#x9762;&#x7684;&#x6240;&#x6709;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x3002;&#x4E8E;&#x662F;&#x6211;&#x5728;dealloc&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x53D6;&#x6D88;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x5728;&#x5B9E;&#x9645;&#x7684;&#x64CD;&#x4F5C;&#x4E2D;&#x5374;&#x53D1;&#x73B0;&#xFF0C;dealloc&#x65B9;&#x6CD5;&#x5728;&#x9000;&#x51FA;&#x9875;&#x9762;&#x65F6;&#x88AB;&#x6CA1;&#x6709;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x7B49;&#x5230;&#x4E86;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x7ED3;&#x675F;&#x540E;&#x624D;&#x4F1A;&#x8C03;&#x7528;&#x3002;&#x7136;&#x540E;&#x6211;&#x60F3;&#x5230;&#x4E86;&#x5E94;&#x8BE5;&#x662F;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x4E2D;block&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x3002;&#x6700;&#x540E;&#x6211;&#x53D1;&#x73B0;&#x516C;&#x53F8;&#x4EE5;&#x524D;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0B;&#x5212;&#x7EBF;&#x7684;&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x3002;&#x6BD4;&#x5982;&#xFF1A;" class="headerlink" title="&#x4ECA;&#x5929;&#x5728;&#x91CD;&#x6784;&#x516C;&#x53F8;&#x4EE5;&#x524D;&#x7684;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x7531;&#x4E8E;&#x516C;&#x53F8;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x5F53;&#x4ECE;&#x4E00;&#x4E2A;&#x5F53;&#x524D;&#x9875;&#x9762;&#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x8981;&#x7EC8;&#x6B62;&#x8BE5;&#x9875;&#x9762;&#x7684;&#x6240;&#x6709;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x3002;&#x4E8E;&#x662F;&#x6211;&#x5728;dealloc&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x53D6;&#x6D88;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x5728;&#x5B9E;&#x9645;&#x7684;&#x64CD;&#x4F5C;&#x4E2D;&#x5374;&#x53D1;&#x73B0;&#xFF0C;dealloc&#x65B9;&#x6CD5;&#x5728;&#x9000;&#x51FA;&#x9875;&#x9762;&#x65F6;&#x88AB;&#x6CA1;&#x6709;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x7B49;&#x5230;&#x4E86;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x7ED3;&#x675F;&#x540E;&#x624D;&#x4F1A;&#x8C03;&#x7528;&#x3002;&#x7136;&#x540E;&#x6211;&#x60F3;&#x5230;&#x4E86;&#x5E94;&#x8BE5;&#x662F;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x4E2D;block&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x3002;&#x6700;&#x540E;&#x6211;&#x53D1;&#x73B0;&#x516C;&#x53F8;&#x4EE5;&#x524D;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0B;&#x5212;&#x7EBF;&#x7684;&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x3002;&#x6BD4;&#x5982;&#xFF1A;"></a>&#x4ECA;&#x5929;&#x5728;&#x91CD;&#x6784;&#x516C;&#x53F8;&#x4EE5;&#x524D;&#x7684;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x7531;&#x4E8E;&#x516C;&#x53F8;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x5F53;&#x4ECE;&#x4E00;&#x4E2A;&#x5F53;&#x524D;&#x9875;&#x9762;&#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x8981;&#x7EC8;&#x6B62;&#x8BE5;&#x9875;&#x9762;&#x7684;&#x6240;&#x6709;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x3002;&#x4E8E;&#x662F;&#x6211;&#x5728;dealloc&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x53D6;&#x6D88;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x5728;&#x5B9E;&#x9645;&#x7684;&#x64CD;&#x4F5C;&#x4E2D;&#x5374;&#x53D1;&#x73B0;&#xFF0C;dealloc&#x65B9;&#x6CD5;&#x5728;&#x9000;&#x51FA;&#x9875;&#x9762;&#x65F6;&#x88AB;&#x6CA1;&#x6709;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x7B49;&#x5230;&#x4E86;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x7ED3;&#x675F;&#x540E;&#x624D;&#x4F1A;&#x8C03;&#x7528;&#x3002;&#x7136;&#x540E;&#x6211;&#x60F3;&#x5230;&#x4E86;&#x5E94;&#x8BE5;&#x662F;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x4E2D;block&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x3002;&#x6700;&#x540E;&#x6211;&#x53D1;&#x73B0;&#x516C;&#x53F8;&#x4EE5;&#x524D;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0B;&#x5212;&#x7EBF;&#x7684;&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x3002;&#x6BD4;&#x5982;&#xFF1A;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@interface <span class="function"><span class="title">TestVC</span></span> (){</span><br><span class="line">    BOOL _isToOuter;</span><br><span class="line">}</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h4 id="&#x8FD9;&#x5C31;&#x5BFC;&#x81F4;&#x4E86;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;&#x3002;&#x7136;&#x540E;&#x6211;&#x5C31;&#x628A;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x90FD;&#x6539;&#x6210;&#x4E86;&#x5C5E;&#x6027;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x518D;&#x52A0;&#x4E0A;&#x4E86;"><a href="#&#x8FD9;&#x5C31;&#x5BFC;&#x81F4;&#x4E86;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;&#x3002;&#x7136;&#x540E;&#x6211;&#x5C31;&#x628A;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x90FD;&#x6539;&#x6210;&#x4E86;&#x5C5E;&#x6027;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x518D;&#x52A0;&#x4E0A;&#x4E86;" class="headerlink" title="&#x8FD9;&#x5C31;&#x5BFC;&#x81F4;&#x4E86;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;&#x3002;&#x7136;&#x540E;&#x6211;&#x5C31;&#x628A;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x90FD;&#x6539;&#x6210;&#x4E86;&#x5C5E;&#x6027;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x518D;&#x52A0;&#x4E0A;&#x4E86;"></a>&#x8FD9;&#x5C31;&#x5BFC;&#x81F4;&#x4E86;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;&#x3002;&#x7136;&#x540E;&#x6211;&#x5C31;&#x628A;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x90FD;&#x6539;&#x6210;&#x4E86;&#x5C5E;&#x6027;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x518D;&#x52A0;&#x4E0A;&#x4E86;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__weak typeof(self) weakSelf = self;</span><br></pre></td></tr></table></figure>
+<h4 id="&#x89E3;&#x51B3;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x5728;&#x60F3;&#x80FD;&#x4E0D;&#x80FD;&#x5C31;&#x7528;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x5728;&#x7F51;&#x4E0A;&#x67E5;&#x4E86;&#x65B9;&#x6CD5;&#xFF0C;&#x627E;&#x5230;&#x4E86;&#x53EF;&#x884C;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;"><a href="#&#x89E3;&#x51B3;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x5728;&#x60F3;&#x80FD;&#x4E0D;&#x80FD;&#x5C31;&#x7528;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x5728;&#x7F51;&#x4E0A;&#x67E5;&#x4E86;&#x65B9;&#x6CD5;&#xFF0C;&#x627E;&#x5230;&#x4E86;&#x53EF;&#x884C;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;" class="headerlink" title="&#x89E3;&#x51B3;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x5728;&#x60F3;&#x80FD;&#x4E0D;&#x80FD;&#x5C31;&#x7528;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x5728;&#x7F51;&#x4E0A;&#x67E5;&#x4E86;&#x65B9;&#x6CD5;&#xFF0C;&#x627E;&#x5230;&#x4E86;&#x53EF;&#x884C;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;"></a>&#x89E3;&#x51B3;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x5728;&#x60F3;&#x80FD;&#x4E0D;&#x80FD;&#x5C31;&#x7528;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x5728;&#x7F51;&#x4E0A;&#x67E5;&#x4E86;&#x65B9;&#x6CD5;&#xFF0C;&#x627E;&#x5230;&#x4E86;&#x53EF;&#x884C;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-(void)<span class="built_in">test</span>{</span><br><span class="line">NeedABlockObj* obj=[[NeedABlockObj alloc] init];</span><br><span class="line">        </span><br><span class="line">        __typeof (&amp;*self) __weak weakSelf = self;</span><br><span class="line">        obj.aBlock = ^(int to){</span><br><span class="line">  //&#x4E0D;&#x628A;weak &#x8F6C;&#x4E3A;strong&#xFF0C;&#x5219;&#x65E0;&#x6CD5;&#x7F16;&#x8BD1;&#x901A;&#x8FC7;&#x3002;</span><br><span class="line">            __typeof (&amp;*self)  strongSelf = weakSelf;</span><br><span class="line">            </span><br><span class="line">            strongSelf-&gt;_isToOuter = YES;</span><br><span class="line">        };</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h4 id="&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x867D;&#x7136;&#x4E5F;&#x80FD;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;strongSelf-gt-&#x8FD9;&#x79CD;&#x98CE;&#x683C;&#x5728;OC&#x4E2D;&#x5F88;&#x5C11;&#x89C1;&#xFF0C;&#x662F;C-&#x7684;&#x5F15;&#x7528;&#x98CE;&#x683C;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x60F3;&#x4E86;&#x60F3;&#x8FD8;&#x662F;&#x653E;&#x5F03;&#x4E86;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5168;&#x90E8;&#x6539;&#x4E3A;&#x5C5E;&#x6027;&#xFF0C;&#x867D;&#x7136;&#x9EBB;&#x70E6;&#x4E86;&#x70B9;&#xFF0C;&#x770B;&#x770B;&#x540E;&#x7EED;&#x8FD8;&#x80FD;&#x4E0D;&#x80FD;&#x627E;&#x5230;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x89E3;&#x51B3;&#x3002;"><a href="#&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x867D;&#x7136;&#x4E5F;&#x80FD;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;strongSelf-gt-&#x8FD9;&#x79CD;&#x98CE;&#x683C;&#x5728;OC&#x4E2D;&#x5F88;&#x5C11;&#x89C1;&#xFF0C;&#x662F;C-&#x7684;&#x5F15;&#x7528;&#x98CE;&#x683C;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x60F3;&#x4E86;&#x60F3;&#x8FD8;&#x662F;&#x653E;&#x5F03;&#x4E86;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5168;&#x90E8;&#x6539;&#x4E3A;&#x5C5E;&#x6027;&#xFF0C;&#x867D;&#x7136;&#x9EBB;&#x70E6;&#x4E86;&#x70B9;&#xFF0C;&#x770B;&#x770B;&#x540E;&#x7EED;&#x8FD8;&#x80FD;&#x4E0D;&#x80FD;&#x627E;&#x5230;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x89E3;&#x51B3;&#x3002;" class="headerlink" title="&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x867D;&#x7136;&#x4E5F;&#x80FD;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;strongSelf-&gt;&#x8FD9;&#x79CD;&#x98CE;&#x683C;&#x5728;OC&#x4E2D;&#x5F88;&#x5C11;&#x89C1;&#xFF0C;&#x662F;C++&#x7684;&#x5F15;&#x7528;&#x98CE;&#x683C;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x60F3;&#x4E86;&#x60F3;&#x8FD8;&#x662F;&#x653E;&#x5F03;&#x4E86;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5168;&#x90E8;&#x6539;&#x4E3A;&#x5C5E;&#x6027;&#xFF0C;&#x867D;&#x7136;&#x9EBB;&#x70E6;&#x4E86;&#x70B9;&#xFF0C;&#x770B;&#x770B;&#x540E;&#x7EED;&#x8FD8;&#x80FD;&#x4E0D;&#x80FD;&#x627E;&#x5230;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x89E3;&#x51B3;&#x3002;"></a>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x867D;&#x7136;&#x4E5F;&#x80FD;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;strongSelf-&gt;&#x8FD9;&#x79CD;&#x98CE;&#x683C;&#x5728;OC&#x4E2D;&#x5F88;&#x5C11;&#x89C1;&#xFF0C;&#x662F;C++&#x7684;&#x5F15;&#x7528;&#x98CE;&#x683C;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x60F3;&#x4E86;&#x60F3;&#x8FD8;&#x662F;&#x653E;&#x5F03;&#x4E86;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5168;&#x90E8;&#x6539;&#x4E3A;&#x5C5E;&#x6027;&#xFF0C;&#x867D;&#x7136;&#x9EBB;&#x70E6;&#x4E86;&#x70B9;&#xFF0C;&#x770B;&#x770B;&#x540E;&#x7EED;&#x8FD8;&#x80FD;&#x4E0D;&#x80FD;&#x627E;&#x5230;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x89E3;&#x51B3;&#x3002;</h4>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/16/Regular/" rel="next" title="一些常用的正则表达式">
+                <i class="fa fa-chevron-left"></i> 一些常用的正则表达式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://dn-zclemo.qbox.me/avater.png"
+               alt="赵琛" />
+          <p class="site-author-name" itemprop="name">赵琛</p>
+          <p class="site-description motion-element" itemprop="description">我是赵琛，一名iOS开发工程师！我的邮箱18356033655@163.com</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#今天在重构公司以前的代码时，由于公司的需求，当从一个当前页面退出时，要终止该页面的所有网络请求。于是我在dealloc中添加了取消网络请求的方法，但在实际的操作中却发现，dealloc方法在退出页面时被没有被调用，而是等到了网络请求结束后才会调用。然后我想到了应该是网络请求中block的循环引用。最后我发现公司以前的对象都是实例变量，也就是下划线的这种形式。比如："><span class="nav-number">1.</span> <span class="nav-text">今天在重构公司以前的代码时，由于公司的需求，当从一个当前页面退出时，要终止该页面的所有网络请求。于是我在dealloc中添加了取消网络请求的方法，但在实际的操作中却发现，dealloc方法在退出页面时被没有被调用，而是等到了网络请求结束后才会调用。然后我想到了应该是网络请求中block的循环引用。最后我发现公司以前的对象都是实例变量，也就是下划线的这种形式。比如：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这就导致了循环引用的问题。然后我就把实例变量都改成了属性的形式，再加上了"><span class="nav-number">2.</span> <span class="nav-text">这就导致了循环引用的问题。然后我就把实例变量都改成了属性的形式，再加上了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决了问题，然后我在想能不能就用实例变量来解决这个问题，然后我在网上查了方法，找到了可行的办法，如下："><span class="nav-number">3.</span> <span class="nav-text">解决了问题，然后我在想能不能就用实例变量来解决这个问题，然后我在网上查了方法，找到了可行的办法，如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这种方法虽然也能解决问题，但是strongSelf-gt-这种风格在OC中很少见，是C-的引用风格，所以我想了想还是放弃了这种方式，全部改为属性，虽然麻烦了点，看看后续还能不能找到更好的方法来解决。"><span class="nav-number">4.</span> <span class="nav-text">这种方法虽然也能解决问题，但是strongSelf->这种风格在OC中很少见，是C++的引用风格，所以我想了想还是放弃了这种方式，全部改为属性，虽然麻烦了点，看看后续还能不能找到更好的方法来解决。</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵琛</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
