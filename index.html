@@ -239,6 +239,108 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/26/CategoryInstance/" itemprop="url">
+                  给类别添加属性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-26T17:14:19+08:00" content="2016-09-26">
+              2016-09-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/26/CategoryInstance/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/26/CategoryInstance/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="&#x5F53;&#x5411;&#x7C7B;&#x522B;&#x4E2D;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x65F6;&#x4F1A;&#x62A5;instance-variables-may-not-be-placed-in-categories&#x9519;&#x8BEF;&#xFF0C;&#x8FD8;&#x597D;&#x6211;&#x4EEC;&#x6709;&#x4E86;runtime&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;runtime&#x7684;Associate&#x4E3A;&#x7C7B;&#x522B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;"><a href="#&#x5F53;&#x5411;&#x7C7B;&#x522B;&#x4E2D;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x65F6;&#x4F1A;&#x62A5;instance-variables-may-not-be-placed-in-categories&#x9519;&#x8BEF;&#xFF0C;&#x8FD8;&#x597D;&#x6211;&#x4EEC;&#x6709;&#x4E86;runtime&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;runtime&#x7684;Associate&#x4E3A;&#x7C7B;&#x522B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;" class="headerlink" title="&#x5F53;&#x5411;&#x7C7B;&#x522B;&#x4E2D;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x65F6;&#x4F1A;&#x62A5;instance variables may not be placed in categories&#x9519;&#x8BEF;&#xFF0C;&#x8FD8;&#x597D;&#x6211;&#x4EEC;&#x6709;&#x4E86;runtime&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;runtime&#x7684;Associate&#x4E3A;&#x7C7B;&#x522B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;"></a>&#x5F53;&#x5411;&#x7C7B;&#x522B;&#x4E2D;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x65F6;&#x4F1A;&#x62A5;instance variables may not be placed in categories&#x9519;&#x8BEF;&#xFF0C;&#x8FD8;&#x597D;&#x6211;&#x4EEC;&#x6709;&#x4E86;runtime&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;runtime&#x7684;Associate&#x4E3A;&#x7C7B;&#x522B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@interface UIView (LFEaseBlankPageView)</span><br><span class="line">{</span><br><span class="line">NSString *<span class="built_in">test</span>;/*&#x62A5;&#x9519;instance variables may not be placed <span class="keyword">in</span> categories */</span><br><span class="line">}</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h4 id="&#x6B63;&#x786E;&#x505A;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;"><a href="#&#x6B63;&#x786E;&#x505A;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;" class="headerlink" title="&#x6B63;&#x786E;&#x505A;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;"></a>&#x6B63;&#x786E;&#x505A;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">static char BlankPageViewKey;</span><br><span class="line"></span><br><span class="line">- (void)<span class="built_in">set</span>BlankPageView:(LFEaseBlankPageView *)blankPageView{</span><br><span class="line">[self willChangeValueForKey:@<span class="string">&quot;BlankPageViewKey&quot;</span>];</span><br><span class="line">objc_<span class="built_in">set</span>AssociatedObject(self, &amp;BlankPageViewKey,</span><br><span class="line">blankPageView,</span><br><span class="line">OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span><br><span class="line">[self didChangeValueForKey:@<span class="string">&quot;BlankPageViewKey&quot;</span>];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">- (LFEaseBlankPageView *)blankPageView{</span><br><span class="line"><span class="built_in">return</span> objc_getAssociatedObject(self, &amp;BlankPageViewKey);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/18/navigationbar/" itemprop="url">
                   navigationbar 隐藏/显示 出现黑边问题
                 </a>
@@ -1149,112 +1251,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/20/FirstPage/" itemprop="url">
-                  First Page
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-20T13:29:03+08:00" content="2016-04-20">
-              2016-04-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/20/FirstPage/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/20/FirstPage/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>&#x6211;&#x7684;&#x7B2C;&#x4E00;&#x7BC7;&#x535A;&#x5BA2;&#xFF0C;Fighting&#xFF01;</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1293,7 +1296,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
