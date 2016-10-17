@@ -239,6 +239,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/17/Line/" itemprop="url">
+                  ios画虚线
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-17T18:15:35+08:00" content="2016-10-17">
+              2016-10-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/17/Line/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/17/Line/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="&#x9879;&#x76EE;&#x4E2D;&#x7528;&#x5230;&#x4E86;&#x81EA;&#x5DF1;&#x753B;&#x7684;&#x865A;&#x7EBF;&#xFF0C;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#xFF1A;"><a href="#&#x9879;&#x76EE;&#x4E2D;&#x7528;&#x5230;&#x4E86;&#x81EA;&#x5DF1;&#x753B;&#x7684;&#x865A;&#x7EBF;&#xFF0C;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#xFF1A;" class="headerlink" title="&#x9879;&#x76EE;&#x4E2D;&#x7528;&#x5230;&#x4E86;&#x81EA;&#x5DF1;&#x753B;&#x7684;&#x865A;&#x7EBF;&#xFF0C;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#xFF1A;"></a>&#x9879;&#x76EE;&#x4E2D;&#x7528;&#x5230;&#x4E86;&#x81EA;&#x5DF1;&#x753B;&#x7684;&#x865A;&#x7EBF;&#xFF0C;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#xFF1A;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">- (instancetype)initWithFrame:(CGRect)frame</span><br><span class="line">{</span><br><span class="line">    <span class="keyword">if</span> (self = [super initWithFrame:frame]) {</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        // &#x753B;&#x865A;&#x7EBF;</span><br><span class="line">        </span><br><span class="line">        CAShapeLayer *shapeLayer = [CAShapeLayer layer];</span><br><span class="line">        [shapeLayer <span class="built_in">set</span>FillColor:[[UIColor clearColor] CGColor]];</span><br><span class="line">        </span><br><span class="line">        // &#x8BBE;&#x7F6E;&#x865A;&#x7EBF;&#x989C;&#x8272;&#x4E3A;blackColor</span><br><span class="line">        [shapeLayer <span class="built_in">set</span>StrokeColor:[[UIColor colorWithHex:@<span class="string">&quot;#dcd2de&quot;</span>] CGColor]];</span><br><span class="line">        [shapeLayer <span class="built_in">set</span>StrokeColor:[[UIColor colorWithRed:223/255.0 green:223/255.0 blue:223/255.0 alpha:1.0f] CGColor]];</span><br><span class="line">        </span><br><span class="line">        // 3.0f&#x8BBE;&#x7F6E;&#x865A;&#x7EBF;&#x7684;&#x5BBD;&#x5EA6;</span><br><span class="line">        [shapeLayer <span class="built_in">set</span>LineWidth:1.0f];</span><br><span class="line">        [shapeLayer <span class="built_in">set</span>LineJoin:kCALineJoinRound];</span><br><span class="line">        </span><br><span class="line">        // 8=&#x7EBF;&#x7684;&#x5BBD;&#x5EA6; 3=&#x6BCF;&#x6761;&#x7EBF;&#x7684;&#x95F4;&#x8DDD;</span><br><span class="line">        [shapeLayer <span class="built_in">set</span>LineDashPattern:</span><br><span class="line">         [NSArray arrayWithObjects:[NSNumber numberWithInt:8],</span><br><span class="line">          [NSNumber numberWithInt:6],nil]];</span><br><span class="line">        </span><br><span class="line">        // Setup the path</span><br><span class="line">        CGMutablePathRef path = CGPathCreateMutable();</span><br><span class="line">        CGPathMoveToPoint(path, NULL, 25, 15);</span><br><span class="line">        CGPathAddLineToPoint(path, NULL, frame.size.width-25,15);</span><br><span class="line">        </span><br><span class="line">        [shapeLayer <span class="built_in">set</span>Path:path];</span><br><span class="line">        CGPathRelease(path);</span><br><span class="line">        </span><br><span class="line">        // &#x53EF;&#x4EE5;&#x628A;self&#x6539;&#x6210;&#x4EFB;&#x4F55;&#x4F60;&#x60F3;&#x8981;&#x7684;UIView, &#x4E0B;&#x56FE;&#x6F14;&#x793A;&#x5C31;&#x662F;&#x653E;&#x5230;UITableViewCell&#x4E2D;&#x7684;</span><br><span class="line">        [[self layer] addSublayer:shapeLayer];</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">return</span> self;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/26/CategoryInstance/" itemprop="url">
                   给类别添加属性
                 </a>
@@ -1148,109 +1249,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/21/PluginFail/" itemprop="url">
-                  插件失效管理办法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T10:04:01+08:00" content="2016-04-21">
-              2016-04-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/21/PluginFail/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/PluginFail/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="&#x5F53;&#x6211;&#x4EEC;&#x5347;&#x7EA7;Xcode&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x7ECF;&#x5E38;&#x9047;&#x5230;&#x63D2;&#x4EF6;&#x5931;&#x6548;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E86;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;"><a href="#&#x5F53;&#x6211;&#x4EEC;&#x5347;&#x7EA7;Xcode&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x7ECF;&#x5E38;&#x9047;&#x5230;&#x63D2;&#x4EF6;&#x5931;&#x6548;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E86;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;" class="headerlink" title="&#x5F53;&#x6211;&#x4EEC;&#x5347;&#x7EA7;Xcode&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x7ECF;&#x5E38;&#x9047;&#x5230;&#x63D2;&#x4EF6;&#x5931;&#x6548;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E86;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;"></a>&#x5F53;&#x6211;&#x4EEC;&#x5347;&#x7EA7;Xcode&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x7ECF;&#x5E38;&#x9047;&#x5230;&#x63D2;&#x4EF6;&#x5931;&#x6548;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E86;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</h3><h4 id="&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF0C;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;"><a href="#&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF0C;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;" class="headerlink" title="&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF0C;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;"></a>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF0C;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ defaults <span class="built_in">read</span> /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</span><br></pre></td></tr></table></figure>
-<h4 id="&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x83B7;&#x53D6;&#x5230;DVTPlugInCompatibilityUUID&#xFF0C;&#x7136;&#x540E;"><a href="#&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x83B7;&#x53D6;&#x5230;DVTPlugInCompatibilityUUID&#xFF0C;&#x7136;&#x540E;" class="headerlink" title="&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x83B7;&#x53D6;&#x5230;DVTPlugInCompatibilityUUID&#xFF0C;&#x7136;&#x540E;"></a>&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x83B7;&#x53D6;&#x5230;DVTPlugInCompatibilityUUID&#xFF0C;&#x7136;&#x540E;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I{} defaults write {} DVTPlugInCompatibilityUUIDs -array-add 9F75337B-21B4-4ADC-B558-F9CADF7073A7</span><br></pre></td></tr></table></figure>
-<h4 id="&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;&#x8BE6;&#x7EC6;&#x89C1;&#x4E0B;&#x56FE;&#xFF1A;"><a href="#&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;&#x8BE6;&#x7EC6;&#x89C1;&#x4E0B;&#x56FE;&#xFF1A;" class="headerlink" title="&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;&#x8BE6;&#x7EC6;&#x89C1;&#x4E0B;&#x56FE;&#xFF1A;"></a>&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;&#x8BE6;&#x7EC6;&#x89C1;&#x4E0B;&#x56FE;&#xFF1A;</h4><p><img src="http://7xt7tb.com1.z0.glb.clouddn.com/pluginfail.png" alt="img"></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1296,7 +1294,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
