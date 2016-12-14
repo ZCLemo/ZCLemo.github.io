@@ -1,0 +1,598 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1.&amp;#x5728;&amp;#x516C;&amp;#x53F8;&amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#x4E2D;&amp;#xFF0C;&amp;#x56FE;&amp;#x7247;&amp;#x9009;&amp;#x62E9;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#x9700;&amp;#x8981;&amp;#x81EA;&amp;#x5DF1;&amp;#x5B9A;&amp;#x4E49;&amp;#x4E00;&amp;#x4E2A;&amp;#x56FE;&amp;#x724">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于PhotoKit写的图片，视频选择器">
+<meta property="og:url" content="http://www.ZCLemo.com/2016/12/14/photokit/index.html">
+<meta property="og:site_name" content="ZCLemo的学习领域">
+<meta property="og:description" content="1.&amp;#x5728;&amp;#x516C;&amp;#x53F8;&amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#x4E2D;&amp;#xFF0C;&amp;#x56FE;&amp;#x7247;&amp;#x9009;&amp;#x62E9;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#x9700;&amp;#x8981;&amp;#x81EA;&amp;#x5DF1;&amp;#x5B9A;&amp;#x4E49;&amp;#x4E00;&amp;#x4E2A;&amp;#x56FE;&amp;#x724">
+<meta property="og:image" content="https://dn-zclemo.qbox.me/IMG_2052.PNG">
+<meta property="og:image" content="https://dn-zclemo.qbox.me/IMG_2053.PNG">
+<meta property="og:image" content="https://dn-zclemo.qbox.me/IMG_2054.PNG">
+<meta property="og:updated_time" content="2016-12-14T03:15:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于PhotoKit写的图片，视频选择器">
+<meta name="twitter:description" content="1.&amp;#x5728;&amp;#x516C;&amp;#x53F8;&amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#x4E2D;&amp;#xFF0C;&amp;#x56FE;&amp;#x7247;&amp;#x9009;&amp;#x62E9;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#x9700;&amp;#x8981;&amp;#x81EA;&amp;#x5DF1;&amp;#x5B9A;&amp;#x4E49;&amp;#x4E00;&amp;#x4E2A;&amp;#x56FE;&amp;#x724">
+<meta name="twitter:image" content="https://dn-zclemo.qbox.me/IMG_2052.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 基于PhotoKit写的图片，视频选择器 | ZCLemo的学习领域 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZCLemo的学习领域</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">有时候，静下心来学习是一种享受！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://dn-zclemo.qbox.me/me.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于PhotoKit写的图片，视频选择器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-14T11:15:16+08:00" content="2016-12-14">
+              2016-12-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/14/photokit/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/14/photokit/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-&#x5728;&#x516C;&#x53F8;&#x7684;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x56FE;&#x7247;&#x9009;&#x62E9;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x81EA;&#x5DF1;&#x6839;&#x636E;PhotoKit&#x5199;&#x4E86;&#x4E00;&#x4E2A;Demo&#xFF0C;&#x4E5F;&#x987A;&#x4FBF;&#x5B66;&#x4E60;&#x4E86;&#x4E00;&#x4E0B;PhotoKit&#xFF0C;&#x81EA;&#x5DF1;&#x6269;&#x5C55;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x65E2;&#x80FD;&#x9009;&#x62E9;&#x56FE;&#x7247;&#x4E5F;&#x80FD;&#x9009;&#x62E9;&#x89C6;&#x9891;&#x3002;"><a href="#1-&#x5728;&#x516C;&#x53F8;&#x7684;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x56FE;&#x7247;&#x9009;&#x62E9;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x81EA;&#x5DF1;&#x6839;&#x636E;PhotoKit&#x5199;&#x4E86;&#x4E00;&#x4E2A;Demo&#xFF0C;&#x4E5F;&#x987A;&#x4FBF;&#x5B66;&#x4E60;&#x4E86;&#x4E00;&#x4E0B;PhotoKit&#xFF0C;&#x81EA;&#x5DF1;&#x6269;&#x5C55;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x65E2;&#x80FD;&#x9009;&#x62E9;&#x56FE;&#x7247;&#x4E5F;&#x80FD;&#x9009;&#x62E9;&#x89C6;&#x9891;&#x3002;" class="headerlink" title="1.&#x5728;&#x516C;&#x53F8;&#x7684;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x56FE;&#x7247;&#x9009;&#x62E9;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x81EA;&#x5DF1;&#x6839;&#x636E;PhotoKit&#x5199;&#x4E86;&#x4E00;&#x4E2A;Demo&#xFF0C;&#x4E5F;&#x987A;&#x4FBF;&#x5B66;&#x4E60;&#x4E86;&#x4E00;&#x4E0B;PhotoKit&#xFF0C;&#x81EA;&#x5DF1;&#x6269;&#x5C55;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x65E2;&#x80FD;&#x9009;&#x62E9;&#x56FE;&#x7247;&#x4E5F;&#x80FD;&#x9009;&#x62E9;&#x89C6;&#x9891;&#x3002;"></a>1.&#x5728;&#x516C;&#x53F8;&#x7684;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x56FE;&#x7247;&#x9009;&#x62E9;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x81EA;&#x5DF1;&#x6839;&#x636E;PhotoKit&#x5199;&#x4E86;&#x4E00;&#x4E2A;Demo&#xFF0C;&#x4E5F;&#x987A;&#x4FBF;&#x5B66;&#x4E60;&#x4E86;&#x4E00;&#x4E0B;PhotoKit&#xFF0C;&#x81EA;&#x5DF1;&#x6269;&#x5C55;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x65E2;&#x80FD;&#x9009;&#x62E9;&#x56FE;&#x7247;&#x4E5F;&#x80FD;&#x9009;&#x62E9;&#x89C6;&#x9891;&#x3002;</h4><h5 id="1-1-&#x56FE;&#x7247;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;"><a href="#1-1-&#x56FE;&#x7247;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;" class="headerlink" title="1.1 &#x56FE;&#x7247;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;:"></a>1.1 &#x56FE;&#x7247;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;:</h5><p><img src="https://dn-zclemo.qbox.me/IMG_2052.PNG" alt="img"></p>
+<h5 id="1-2-&#x83B7;&#x53D6;&#x76F8;&#x518C;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;"><a href="#1-2-&#x83B7;&#x53D6;&#x76F8;&#x518C;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;" class="headerlink" title="1.2 &#x83B7;&#x53D6;&#x76F8;&#x518C;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;:"></a>1.2 &#x83B7;&#x53D6;&#x76F8;&#x518C;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;:</h5><p><img src="https://dn-zclemo.qbox.me/IMG_2053.PNG" alt="img"></p>
+<h5 id="1-3-&#x89C6;&#x9891;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;"><a href="#1-3-&#x89C6;&#x9891;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;" class="headerlink" title="1.3 &#x89C6;&#x9891;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;:"></a>1.3 &#x89C6;&#x9891;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;:</h5><p><img src="https://dn-zclemo.qbox.me/IMG_2054.PNG" alt="img"></p>
+<h4 id="2-&#x76F8;&#x518C;&#x548C;&#x5A92;&#x4F53;&#x7684;&#x83B7;&#x53D6;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x5728;ZCPhotoManager&#x8FD9;&#x4E2A;&#x7C7B;&#x91CC;&#x9762;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x53EF;&#x80FD;&#x5199;&#x4E00;&#x7BC7;&#x5173;&#x4E8E;PhotoKit&#x4ECB;&#x7ECD;&#x7684;&#x535A;&#x5BA2;&#x3002;"><a href="#2-&#x76F8;&#x518C;&#x548C;&#x5A92;&#x4F53;&#x7684;&#x83B7;&#x53D6;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x5728;ZCPhotoManager&#x8FD9;&#x4E2A;&#x7C7B;&#x91CC;&#x9762;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x53EF;&#x80FD;&#x5199;&#x4E00;&#x7BC7;&#x5173;&#x4E8E;PhotoKit&#x4ECB;&#x7ECD;&#x7684;&#x535A;&#x5BA2;&#x3002;" class="headerlink" title="2.&#x76F8;&#x518C;&#x548C;&#x5A92;&#x4F53;&#x7684;&#x83B7;&#x53D6;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x5728;ZCPhotoManager&#x8FD9;&#x4E2A;&#x7C7B;&#x91CC;&#x9762;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x53EF;&#x80FD;&#x5199;&#x4E00;&#x7BC7;&#x5173;&#x4E8E;PhotoKit&#x4ECB;&#x7ECD;&#x7684;&#x535A;&#x5BA2;&#x3002;"></a>2.&#x76F8;&#x518C;&#x548C;&#x5A92;&#x4F53;&#x7684;&#x83B7;&#x53D6;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x5728;ZCPhotoManager&#x8FD9;&#x4E2A;&#x7C7B;&#x91CC;&#x9762;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x53EF;&#x80FD;&#x5199;&#x4E00;&#x7BC7;&#x5173;&#x4E8E;PhotoKit&#x4ECB;&#x7ECD;&#x7684;&#x535A;&#x5BA2;&#x3002;</h4><h5 id="2-1-&#x83B7;&#x53D6;&#x76F8;&#x518C;"><a href="#2-1-&#x83B7;&#x53D6;&#x76F8;&#x518C;" class="headerlink" title="2.1 &#x83B7;&#x53D6;&#x76F8;&#x518C;"></a>2.1 &#x83B7;&#x53D6;&#x76F8;&#x518C;</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">- (NSMutableArray *)showAlbums {</span><br><span class="line"></span><br><span class="line">PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];</span><br><span class="line">PHFetchResult *topLevelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];</span><br><span class="line">self.fetchResults = @[smartAlbums, topLevelUserCollections];</span><br><span class="line"></span><br><span class="line">NSMutableArray *albums = [NSMutableArray array];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (PHFetchResult *fetchResult <span class="keyword">in</span> self.fetchResults)</span><br><span class="line">{</span><br><span class="line"><span class="keyword">for</span> (PHCollection *collection <span class="keyword">in</span> fetchResult) {</span><br><span class="line"><span class="keyword">if</span> ([collection isKindOfClass:[PHAssetCollection class]])</span><br><span class="line">{</span><br><span class="line">PHAssetCollection *assetCollection = (PHAssetCollection *)collection;</span><br><span class="line">PHFetchResult *assets = [self assetsInAssetCollection:assetCollection];</span><br><span class="line"><span class="keyword">if</span> (assets.count &gt; 0) {</span><br><span class="line"><span class="keyword">if</span> (assetCollection.assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumUserLibrary) {</span><br><span class="line">[albums insertObject:assetCollection atIndex:0];</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">[albums addObject:assetCollection];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line"><span class="built_in">return</span> albums;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h5 id="2-2-&#x83B7;&#x53D6;&#x76F8;&#x518C;&#x4E2D;&#x7684;&#x5A92;&#x4F53;"><a href="#2-2-&#x83B7;&#x53D6;&#x76F8;&#x518C;&#x4E2D;&#x7684;&#x5A92;&#x4F53;" class="headerlink" title="2.2 &#x83B7;&#x53D6;&#x76F8;&#x518C;&#x4E2D;&#x7684;&#x5A92;&#x4F53;"></a>2.2 &#x83B7;&#x53D6;&#x76F8;&#x518C;&#x4E2D;&#x7684;&#x5A92;&#x4F53;</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (PHFetchResult *)assetsInAssetCollection:(PHAssetCollection *)album{</span><br><span class="line"></span><br><span class="line">PHFetchOptions *options = [[PHFetchOptions alloc] init];</span><br><span class="line">options.predicate = [NSPredicate predicateWithFormat:@<span class="string">&quot;mediaType in %@&quot;</span>, self.mediaTypes];</span><br><span class="line">options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@<span class="string">&quot;creationDate&quot;</span> ascending:NO]];</span><br><span class="line"><span class="built_in">return</span> [PHAsset fetchAssetsInAssetCollection:(PHAssetCollection *)album options:options];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h5 id="2-3-&#x7136;&#x540E;&#x4E3B;&#x8981;&#x7684;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x56FE;&#x7247;&#x7684;&#x5C55;&#x793A;&#xFF0C;&#x5E03;&#x5C40;&#x3002;"><a href="#2-3-&#x7136;&#x540E;&#x4E3B;&#x8981;&#x7684;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x56FE;&#x7247;&#x7684;&#x5C55;&#x793A;&#xFF0C;&#x5E03;&#x5C40;&#x3002;" class="headerlink" title="2.3 &#x7136;&#x540E;&#x4E3B;&#x8981;&#x7684;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x56FE;&#x7247;&#x7684;&#x5C55;&#x793A;&#xFF0C;&#x5E03;&#x5C40;&#x3002;"></a>2.3 &#x7136;&#x540E;&#x4E3B;&#x8981;&#x7684;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x56FE;&#x7247;&#x7684;&#x5C55;&#x793A;&#xFF0C;&#x5E03;&#x5C40;&#x3002;</h5><h4 id="3-&#x76F4;&#x63A5;&#x4E0A;Demo"><a href="#3-&#x76F4;&#x63A5;&#x4E0A;Demo" class="headerlink" title="3.&#x76F4;&#x63A5;&#x4E0A;Demo"></a>3.&#x76F4;&#x63A5;&#x4E0A;Demo</h4><p><a href="https://github.com/ZCLemo/ZCAssetsPickerController" target="_blank" rel="external">github&#x5730;&#x5740;</a></p>
+<h5 id="3-1-&#x7531;&#x4E8E;&#x65F6;&#x95F4;&#x6BD4;&#x8F83;&#x77ED;&#xFF0C;&#x91CC;&#x9762;&#x7684;UI&#x5199;&#x7684;&#x53EF;&#x80FD;&#x6709;&#x70B9;&#x7C97;&#x7CD9;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x81EA;&#x5DF1;&#x5B66;&#x4E60;&#xFF0C;&#x5C31;&#x8FD9;&#x6837;&#x5427;&#x3002;"><a href="#3-1-&#x7531;&#x4E8E;&#x65F6;&#x95F4;&#x6BD4;&#x8F83;&#x77ED;&#xFF0C;&#x91CC;&#x9762;&#x7684;UI&#x5199;&#x7684;&#x53EF;&#x80FD;&#x6709;&#x70B9;&#x7C97;&#x7CD9;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x81EA;&#x5DF1;&#x5B66;&#x4E60;&#xFF0C;&#x5C31;&#x8FD9;&#x6837;&#x5427;&#x3002;" class="headerlink" title="3.1 &#x7531;&#x4E8E;&#x65F6;&#x95F4;&#x6BD4;&#x8F83;&#x77ED;&#xFF0C;&#x91CC;&#x9762;&#x7684;UI&#x5199;&#x7684;&#x53EF;&#x80FD;&#x6709;&#x70B9;&#x7C97;&#x7CD9;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x81EA;&#x5DF1;&#x5B66;&#x4E60;&#xFF0C;&#x5C31;&#x8FD9;&#x6837;&#x5427;&#x3002;"></a>3.1 &#x7531;&#x4E8E;&#x65F6;&#x95F4;&#x6BD4;&#x8F83;&#x77ED;&#xFF0C;&#x91CC;&#x9762;&#x7684;UI&#x5199;&#x7684;&#x53EF;&#x80FD;&#x6709;&#x70B9;&#x7C97;&#x7CD9;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x81EA;&#x5DF1;&#x5B66;&#x4E60;&#xFF0C;&#x5C31;&#x8FD9;&#x6837;&#x5427;&#x3002;</h5>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/29/hud/" rel="next" title="MBProgressHUD的一些常用的封装">
+                <i class="fa fa-chevron-left"></i> MBProgressHUD的一些常用的封装
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/14/photokit/"
+           data-title="基于PhotoKit写的图片，视频选择器" data-url="http://www.ZCLemo.com/2016/12/14/photokit/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://dn-zclemo.qbox.me/avater.png"
+               alt="赵琛" />
+          <p class="site-author-name" itemprop="name">赵琛</p>
+          <p class="site-description motion-element" itemprop="description">我是赵琛，一名iOS开发工程师！我的邮箱18356033655@163.com</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-在公司的项目中，图片选择的时候需要自己定义一个图片选择器，自己根据PhotoKit写了一个Demo，也顺便学习了一下PhotoKit，自己扩展了一下，既能选择图片也能选择视频。"><span class="nav-number">1.</span> <span class="nav-text">1.在公司的项目中，图片选择的时候需要自己定义一个图片选择器，自己根据PhotoKit写了一个Demo，也顺便学习了一下PhotoKit，自己扩展了一下，既能选择图片也能选择视频。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-图片选择，如下图"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 图片选择，如下图:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-获取相册，如下图"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 获取相册，如下图:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-视频选择，如下图"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 视频选择，如下图:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-相册和媒体的获取代码主要在ZCPhotoManager这个类里面，接下来可能写一篇关于PhotoKit介绍的博客。"><span class="nav-number">2.</span> <span class="nav-text">2.相册和媒体的获取代码主要在ZCPhotoManager这个类里面，接下来可能写一篇关于PhotoKit介绍的博客。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-获取相册"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 获取相册</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-获取相册中的媒体"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 获取相册中的媒体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-然后主要的功能就是图片的展示，布局。"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 然后主要的功能就是图片的展示，布局。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-直接上Demo"><span class="nav-number">3.</span> <span class="nav-text">3.直接上Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-由于时间比较短，里面的UI写的可能有点粗糙，主要是为了自己学习，就这样吧。"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 由于时间比较短，里面的UI写的可能有点粗糙，主要是为了自己学习，就这样吧。</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵琛</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zclemo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
