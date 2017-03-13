@@ -239,6 +239,106 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/13/mvvm/" itemprop="url">
+                  MVVM使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-13T13:47:12+08:00" content="2017-03-13">
+              2017-03-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/13/mvvm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/13/mvvm/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-&#x6700;&#x8FD1;&#x6BD4;&#x8F83;&#x5FD9;&#xFF0C;&#x4E00;&#x76F4;&#x5728;&#x5FD9;&#x7740;&#x65B0;&#x9879;&#x76EE;&#x7684;&#x5F00;&#x53D1;&#x3002;&#x4EE5;&#x524D;&#x7684;&#x9879;&#x76EE;&#x90FD;&#x662F;&#x7528;mvc&#x6A21;&#x5F0F;&#xFF0C;&#x6709;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x9875;&#x9762;&#x7684;controller&#x4EE3;&#x7801;&#x91CC;&#x4F1A;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x867D;&#x7136;&#x4E5F;&#x505A;&#x8FC7;&#x4E00;&#x4E9B;&#x62C6;&#x5206;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x8001;&#x5927;&#x7684;&#x8981;&#x6C42;&#x3002;&#x6240;&#x4EE5;&#x5728;&#x65B0;&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;MVVM&#x6A21;&#x5F0F;&#xFF0C;MVVM&#x6A21;&#x5F0F;&#x7684;&#x4ECB;&#x7ECD;&#x7F51;&#x4E0A;&#x7684;&#x6587;&#x7AE0;&#x4E00;&#x641C;&#x4E00;&#x5927;&#x5806;&#xFF0C;&#x6211;&#x8FD9;&#x5C31;&#x4E0D;&#x4ECB;&#x7ECD;&#x4E86;&#x3002;"><a href="#1-&#x6700;&#x8FD1;&#x6BD4;&#x8F83;&#x5FD9;&#xFF0C;&#x4E00;&#x76F4;&#x5728;&#x5FD9;&#x7740;&#x65B0;&#x9879;&#x76EE;&#x7684;&#x5F00;&#x53D1;&#x3002;&#x4EE5;&#x524D;&#x7684;&#x9879;&#x76EE;&#x90FD;&#x662F;&#x7528;mvc&#x6A21;&#x5F0F;&#xFF0C;&#x6709;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x9875;&#x9762;&#x7684;controller&#x4EE3;&#x7801;&#x91CC;&#x4F1A;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x867D;&#x7136;&#x4E5F;&#x505A;&#x8FC7;&#x4E00;&#x4E9B;&#x62C6;&#x5206;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x8001;&#x5927;&#x7684;&#x8981;&#x6C42;&#x3002;&#x6240;&#x4EE5;&#x5728;&#x65B0;&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;MVVM&#x6A21;&#x5F0F;&#xFF0C;MVVM&#x6A21;&#x5F0F;&#x7684;&#x4ECB;&#x7ECD;&#x7F51;&#x4E0A;&#x7684;&#x6587;&#x7AE0;&#x4E00;&#x641C;&#x4E00;&#x5927;&#x5806;&#xFF0C;&#x6211;&#x8FD9;&#x5C31;&#x4E0D;&#x4ECB;&#x7ECD;&#x4E86;&#x3002;" class="headerlink" title="1.&#x6700;&#x8FD1;&#x6BD4;&#x8F83;&#x5FD9;&#xFF0C;&#x4E00;&#x76F4;&#x5728;&#x5FD9;&#x7740;&#x65B0;&#x9879;&#x76EE;&#x7684;&#x5F00;&#x53D1;&#x3002;&#x4EE5;&#x524D;&#x7684;&#x9879;&#x76EE;&#x90FD;&#x662F;&#x7528;mvc&#x6A21;&#x5F0F;&#xFF0C;&#x6709;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x9875;&#x9762;&#x7684;controller&#x4EE3;&#x7801;&#x91CC;&#x4F1A;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x867D;&#x7136;&#x4E5F;&#x505A;&#x8FC7;&#x4E00;&#x4E9B;&#x62C6;&#x5206;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x8001;&#x5927;&#x7684;&#x8981;&#x6C42;&#x3002;&#x6240;&#x4EE5;&#x5728;&#x65B0;&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;MVVM&#x6A21;&#x5F0F;&#xFF0C;MVVM&#x6A21;&#x5F0F;&#x7684;&#x4ECB;&#x7ECD;&#x7F51;&#x4E0A;&#x7684;&#x6587;&#x7AE0;&#x4E00;&#x641C;&#x4E00;&#x5927;&#x5806;&#xFF0C;&#x6211;&#x8FD9;&#x5C31;&#x4E0D;&#x4ECB;&#x7ECD;&#x4E86;&#x3002;"></a>1.&#x6700;&#x8FD1;&#x6BD4;&#x8F83;&#x5FD9;&#xFF0C;&#x4E00;&#x76F4;&#x5728;&#x5FD9;&#x7740;&#x65B0;&#x9879;&#x76EE;&#x7684;&#x5F00;&#x53D1;&#x3002;&#x4EE5;&#x524D;&#x7684;&#x9879;&#x76EE;&#x90FD;&#x662F;&#x7528;mvc&#x6A21;&#x5F0F;&#xFF0C;&#x6709;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x9875;&#x9762;&#x7684;controller&#x4EE3;&#x7801;&#x91CC;&#x4F1A;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x867D;&#x7136;&#x4E5F;&#x505A;&#x8FC7;&#x4E00;&#x4E9B;&#x62C6;&#x5206;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x8001;&#x5927;&#x7684;&#x8981;&#x6C42;&#x3002;&#x6240;&#x4EE5;&#x5728;&#x65B0;&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;MVVM&#x6A21;&#x5F0F;&#xFF0C;MVVM&#x6A21;&#x5F0F;&#x7684;&#x4ECB;&#x7ECD;&#x7F51;&#x4E0A;&#x7684;&#x6587;&#x7AE0;&#x4E00;&#x641C;&#x4E00;&#x5927;&#x5806;&#xFF0C;&#x6211;&#x8FD9;&#x5C31;&#x4E0D;&#x4ECB;&#x7ECD;&#x4E86;&#x3002;</h4><h4 id="2-&#x770B;&#x8FC7;MVVM&#x7684;&#x4E00;&#x4E9B;&#x6587;&#x7AE0;&#xFF0C;&#x80AF;&#x5B9A;&#x4F1A;&#x77E5;&#x9053;RAC-&#x867D;&#x7136;&#x8BF4;MVVM&#x6A21;&#x5F0F;&#x548C;RAC&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5173;&#x8054;&#xFF0C;&#x4F46;&#x662F;RAC&#x5BF9;&#x4E8E;MVVM&#x6A21;&#x5F0F;&#x4E2D;ViewModel&#x548C;View&#x7684;&#x7ED1;&#x5B9A;&#xFF0C;ViewModel&#x548C;Controller&#x7684;&#x7ED1;&#x5B9A;&#x6765;&#x8BF4;&#x76F8;&#x5F53;&#x65B9;&#x4FBF;&#x3002;"><a href="#2-&#x770B;&#x8FC7;MVVM&#x7684;&#x4E00;&#x4E9B;&#x6587;&#x7AE0;&#xFF0C;&#x80AF;&#x5B9A;&#x4F1A;&#x77E5;&#x9053;RAC-&#x867D;&#x7136;&#x8BF4;MVVM&#x6A21;&#x5F0F;&#x548C;RAC&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5173;&#x8054;&#xFF0C;&#x4F46;&#x662F;RAC&#x5BF9;&#x4E8E;MVVM&#x6A21;&#x5F0F;&#x4E2D;ViewModel&#x548C;View&#x7684;&#x7ED1;&#x5B9A;&#xFF0C;ViewModel&#x548C;Controller&#x7684;&#x7ED1;&#x5B9A;&#x6765;&#x8BF4;&#x76F8;&#x5F53;&#x65B9;&#x4FBF;&#x3002;" class="headerlink" title="2.&#x770B;&#x8FC7;MVVM&#x7684;&#x4E00;&#x4E9B;&#x6587;&#x7AE0;&#xFF0C;&#x80AF;&#x5B9A;&#x4F1A;&#x77E5;&#x9053;RAC,&#x867D;&#x7136;&#x8BF4;MVVM&#x6A21;&#x5F0F;&#x548C;RAC&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5173;&#x8054;&#xFF0C;&#x4F46;&#x662F;RAC&#x5BF9;&#x4E8E;MVVM&#x6A21;&#x5F0F;&#x4E2D;ViewModel&#x548C;View&#x7684;&#x7ED1;&#x5B9A;&#xFF0C;ViewModel&#x548C;Controller&#x7684;&#x7ED1;&#x5B9A;&#x6765;&#x8BF4;&#x76F8;&#x5F53;&#x65B9;&#x4FBF;&#x3002;"></a>2.&#x770B;&#x8FC7;MVVM&#x7684;&#x4E00;&#x4E9B;&#x6587;&#x7AE0;&#xFF0C;&#x80AF;&#x5B9A;&#x4F1A;&#x77E5;&#x9053;RAC,&#x867D;&#x7136;&#x8BF4;MVVM&#x6A21;&#x5F0F;&#x548C;RAC&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5173;&#x8054;&#xFF0C;&#x4F46;&#x662F;RAC&#x5BF9;&#x4E8E;MVVM&#x6A21;&#x5F0F;&#x4E2D;ViewModel&#x548C;View&#x7684;&#x7ED1;&#x5B9A;&#xFF0C;ViewModel&#x548C;Controller&#x7684;&#x7ED1;&#x5B9A;&#x6765;&#x8BF4;&#x76F8;&#x5F53;&#x65B9;&#x4FBF;&#x3002;</h4><h4 id="3-&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x52A0;&#x5165;&#x4E86;&#x4E00;&#x4E9B;&#x81EA;&#x5DF1;&#x7684;&#x521B;&#x65B0;&#xFF0C;&#x6211;&#x4EEC;&#x7ED9;Controller&#x90FD;&#x65B0;&#x589E;&#x4E86;&#x4E00;&#x4E2A;RootView&#xFF0C;&#x52A0;&#x5728;Controller&#x7684;View&#x4E0A;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x89C6;&#x56FE;&#x5C42;&#x5C55;&#x793A;&#x548C;&#x64CD;&#x4F5C;&#x90FD;&#x5728;&#x8FD9;&#x4E2A;RootView&#x4E0A;&#x8FDB;&#x884C;&#xFF0C;&#x8FD9;&#x6837;Controller&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x975E;&#x5E38;&#x5C11;&#x4E86;&#x3002;&#x521A;&#x5F00;&#x59CB;&#x6211;&#x4EEC;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x54E5;&#x4EEC;&#x63D0;&#x51FA;&#x8FD9;&#x4E2A;&#x65B9;&#x6848;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x5EA6;&#x5F88;&#x4E0D;&#x80FD;&#x7406;&#x89E3;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x8FD9;&#x6837;&#x4E0D;&#x662F;&#x591A;&#x6B64;&#x4E00;&#x4E3E;&#x5417;&#xFF0C;&#x6BD5;&#x7ADF;&#x6BCF;&#x4E2A;Controller&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;View&#x89C6;&#x56FE;&#xFF0C;&#x800C;&#x4E14;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x544A;&#x8BC9;Controller&#x4E86;&#xFF0C;&#x8FD8;&#x6709;&#x5C31;&#x662F;ViewModel&#x5904;&#x7406;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x8981;&#x600E;&#x4E48;&#x6837;&#x65E2;&#x80FD;&#x544A;&#x8BC9;Controller&#x53C8;&#x80FD;&#x544A;&#x8BC9;RootView&#x3002;&#x540E;&#x6765;&#x7ECF;&#x8FC7;&#x5927;&#x5BB6;&#x7684;&#x8BA8;&#x8BBA;&#xFF0C;&#x89C9;&#x5F97;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x8FD8;&#x662F;&#x53EF;&#x884C;&#x7684;&#xFF0C;&#x5E76;&#x5BF9;&#x4E0A;&#x9762;&#x7684;&#x7591;&#x95EE;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x6848;&#x3002;"><a href="#3-&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x52A0;&#x5165;&#x4E86;&#x4E00;&#x4E9B;&#x81EA;&#x5DF1;&#x7684;&#x521B;&#x65B0;&#xFF0C;&#x6211;&#x4EEC;&#x7ED9;Controller&#x90FD;&#x65B0;&#x589E;&#x4E86;&#x4E00;&#x4E2A;RootView&#xFF0C;&#x52A0;&#x5728;Controller&#x7684;View&#x4E0A;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x89C6;&#x56FE;&#x5C42;&#x5C55;&#x793A;&#x548C;&#x64CD;&#x4F5C;&#x90FD;&#x5728;&#x8FD9;&#x4E2A;RootView&#x4E0A;&#x8FDB;&#x884C;&#xFF0C;&#x8FD9;&#x6837;Controller&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x975E;&#x5E38;&#x5C11;&#x4E86;&#x3002;&#x521A;&#x5F00;&#x59CB;&#x6211;&#x4EEC;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x54E5;&#x4EEC;&#x63D0;&#x51FA;&#x8FD9;&#x4E2A;&#x65B9;&#x6848;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x5EA6;&#x5F88;&#x4E0D;&#x80FD;&#x7406;&#x89E3;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x8FD9;&#x6837;&#x4E0D;&#x662F;&#x591A;&#x6B64;&#x4E00;&#x4E3E;&#x5417;&#xFF0C;&#x6BD5;&#x7ADF;&#x6BCF;&#x4E2A;Controller&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;View&#x89C6;&#x56FE;&#xFF0C;&#x800C;&#x4E14;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x544A;&#x8BC9;Controller&#x4E86;&#xFF0C;&#x8FD8;&#x6709;&#x5C31;&#x662F;ViewModel&#x5904;&#x7406;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x8981;&#x600E;&#x4E48;&#x6837;&#x65E2;&#x80FD;&#x544A;&#x8BC9;Controller&#x53C8;&#x80FD;&#x544A;&#x8BC9;RootView&#x3002;&#x540E;&#x6765;&#x7ECF;&#x8FC7;&#x5927;&#x5BB6;&#x7684;&#x8BA8;&#x8BBA;&#xFF0C;&#x89C9;&#x5F97;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x8FD8;&#x662F;&#x53EF;&#x884C;&#x7684;&#xFF0C;&#x5E76;&#x5BF9;&#x4E0A;&#x9762;&#x7684;&#x7591;&#x95EE;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x6848;&#x3002;" class="headerlink" title="3.&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x52A0;&#x5165;&#x4E86;&#x4E00;&#x4E9B;&#x81EA;&#x5DF1;&#x7684;&#x521B;&#x65B0;&#xFF0C;&#x6211;&#x4EEC;&#x7ED9;Controller&#x90FD;&#x65B0;&#x589E;&#x4E86;&#x4E00;&#x4E2A;RootView&#xFF0C;&#x52A0;&#x5728;Controller&#x7684;View&#x4E0A;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x89C6;&#x56FE;&#x5C42;&#x5C55;&#x793A;&#x548C;&#x64CD;&#x4F5C;&#x90FD;&#x5728;&#x8FD9;&#x4E2A;RootView&#x4E0A;&#x8FDB;&#x884C;&#xFF0C;&#x8FD9;&#x6837;Controller&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x975E;&#x5E38;&#x5C11;&#x4E86;&#x3002;&#x521A;&#x5F00;&#x59CB;&#x6211;&#x4EEC;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x54E5;&#x4EEC;&#x63D0;&#x51FA;&#x8FD9;&#x4E2A;&#x65B9;&#x6848;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x5EA6;&#x5F88;&#x4E0D;&#x80FD;&#x7406;&#x89E3;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x8FD9;&#x6837;&#x4E0D;&#x662F;&#x591A;&#x6B64;&#x4E00;&#x4E3E;&#x5417;&#xFF0C;&#x6BD5;&#x7ADF;&#x6BCF;&#x4E2A;Controller&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;View&#x89C6;&#x56FE;&#xFF0C;&#x800C;&#x4E14;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x544A;&#x8BC9;Controller&#x4E86;&#xFF0C;&#x8FD8;&#x6709;&#x5C31;&#x662F;ViewModel&#x5904;&#x7406;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x8981;&#x600E;&#x4E48;&#x6837;&#x65E2;&#x80FD;&#x544A;&#x8BC9;Controller&#x53C8;&#x80FD;&#x544A;&#x8BC9;RootView&#x3002;&#x540E;&#x6765;&#x7ECF;&#x8FC7;&#x5927;&#x5BB6;&#x7684;&#x8BA8;&#x8BBA;&#xFF0C;&#x89C9;&#x5F97;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x8FD8;&#x662F;&#x53EF;&#x884C;&#x7684;&#xFF0C;&#x5E76;&#x5BF9;&#x4E0A;&#x9762;&#x7684;&#x7591;&#x95EE;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x6848;&#x3002;"></a>3.&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x52A0;&#x5165;&#x4E86;&#x4E00;&#x4E9B;&#x81EA;&#x5DF1;&#x7684;&#x521B;&#x65B0;&#xFF0C;&#x6211;&#x4EEC;&#x7ED9;Controller&#x90FD;&#x65B0;&#x589E;&#x4E86;&#x4E00;&#x4E2A;RootView&#xFF0C;&#x52A0;&#x5728;Controller&#x7684;View&#x4E0A;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x89C6;&#x56FE;&#x5C42;&#x5C55;&#x793A;&#x548C;&#x64CD;&#x4F5C;&#x90FD;&#x5728;&#x8FD9;&#x4E2A;RootView&#x4E0A;&#x8FDB;&#x884C;&#xFF0C;&#x8FD9;&#x6837;Controller&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x975E;&#x5E38;&#x5C11;&#x4E86;&#x3002;&#x521A;&#x5F00;&#x59CB;&#x6211;&#x4EEC;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x54E5;&#x4EEC;&#x63D0;&#x51FA;&#x8FD9;&#x4E2A;&#x65B9;&#x6848;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x5EA6;&#x5F88;&#x4E0D;&#x80FD;&#x7406;&#x89E3;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x8FD9;&#x6837;&#x4E0D;&#x662F;&#x591A;&#x6B64;&#x4E00;&#x4E3E;&#x5417;&#xFF0C;&#x6BD5;&#x7ADF;&#x6BCF;&#x4E2A;Controller&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;View&#x89C6;&#x56FE;&#xFF0C;&#x800C;&#x4E14;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x544A;&#x8BC9;Controller&#x4E86;&#xFF0C;&#x8FD8;&#x6709;&#x5C31;&#x662F;ViewModel&#x5904;&#x7406;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x8981;&#x600E;&#x4E48;&#x6837;&#x65E2;&#x80FD;&#x544A;&#x8BC9;Controller&#x53C8;&#x80FD;&#x544A;&#x8BC9;RootView&#x3002;&#x540E;&#x6765;&#x7ECF;&#x8FC7;&#x5927;&#x5BB6;&#x7684;&#x8BA8;&#x8BBA;&#xFF0C;&#x89C9;&#x5F97;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x8FD8;&#x662F;&#x53EF;&#x884C;&#x7684;&#xFF0C;&#x5E76;&#x5BF9;&#x4E0A;&#x9762;&#x7684;&#x7591;&#x95EE;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x6848;&#x3002;</h4><h5 id="3-1-&#x5BF9;&#x4E8E;RootView&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x544A;&#x8BC9;Controller&#x7684;&#x7591;&#x95EE;&#xFF0C;&#x89E3;&#x51B3;&#x7684;&#x529E;&#x6CD5;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x901A;&#x8FC7;Block&#x56DE;&#x8C03;&#xFF0C;&#x4EE3;&#x7406;&#xFF0C;RAC&#x90FD;&#x80FD;&#x89E3;&#x51B3;&#xFF0C;&#x867D;&#x7136;&#x591A;&#x505A;&#x4E86;&#x4E00;&#x6B65;&#xFF0C;&#x4F46;&#x8FD8;&#x662F;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x561B;&#x3002;"><a href="#3-1-&#x5BF9;&#x4E8E;RootView&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x544A;&#x8BC9;Controller&#x7684;&#x7591;&#x95EE;&#xFF0C;&#x89E3;&#x51B3;&#x7684;&#x529E;&#x6CD5;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x901A;&#x8FC7;Block&#x56DE;&#x8C03;&#xFF0C;&#x4EE3;&#x7406;&#xFF0C;RAC&#x90FD;&#x80FD;&#x89E3;&#x51B3;&#xFF0C;&#x867D;&#x7136;&#x591A;&#x505A;&#x4E86;&#x4E00;&#x6B65;&#xFF0C;&#x4F46;&#x8FD8;&#x662F;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x561B;&#x3002;" class="headerlink" title="3.1 &#x5BF9;&#x4E8E;RootView&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x544A;&#x8BC9;Controller&#x7684;&#x7591;&#x95EE;&#xFF0C;&#x89E3;&#x51B3;&#x7684;&#x529E;&#x6CD5;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x901A;&#x8FC7;Block&#x56DE;&#x8C03;&#xFF0C;&#x4EE3;&#x7406;&#xFF0C;RAC&#x90FD;&#x80FD;&#x89E3;&#x51B3;&#xFF0C;&#x867D;&#x7136;&#x591A;&#x505A;&#x4E86;&#x4E00;&#x6B65;&#xFF0C;&#x4F46;&#x8FD8;&#x662F;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x561B;&#x3002;"></a>3.1 &#x5BF9;&#x4E8E;RootView&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x544A;&#x8BC9;Controller&#x7684;&#x7591;&#x95EE;&#xFF0C;&#x89E3;&#x51B3;&#x7684;&#x529E;&#x6CD5;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x901A;&#x8FC7;Block&#x56DE;&#x8C03;&#xFF0C;&#x4EE3;&#x7406;&#xFF0C;RAC&#x90FD;&#x80FD;&#x89E3;&#x51B3;&#xFF0C;&#x867D;&#x7136;&#x591A;&#x505A;&#x4E86;&#x4E00;&#x6B65;&#xFF0C;&#x4F46;&#x8FD8;&#x662F;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x561B;&#x3002;</h5><h5 id="3-2-&#x5BF9;&#x4E8E;ViewModel&#x5904;&#x7406;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x8981;&#x600E;&#x4E48;&#x6837;&#x65E2;&#x80FD;&#x544A;&#x8BC9;Controller&#x53C8;&#x80FD;&#x544A;&#x8BC9;RootView&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x662F;Controller&#x548C;RootView&#x516C;&#x7528;&#x4E00;&#x4E2A;ViewModel&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x60F3;&#x548C;&#x8C01;&#x7ED1;&#x5B9A;&#x90FD;&#x884C;&#x4E86;&#x3002;"><a href="#3-2-&#x5BF9;&#x4E8E;ViewModel&#x5904;&#x7406;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x8981;&#x600E;&#x4E48;&#x6837;&#x65E2;&#x80FD;&#x544A;&#x8BC9;Controller&#x53C8;&#x80FD;&#x544A;&#x8BC9;RootView&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x662F;Controller&#x548C;RootView&#x516C;&#x7528;&#x4E00;&#x4E2A;ViewModel&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x60F3;&#x548C;&#x8C01;&#x7ED1;&#x5B9A;&#x90FD;&#x884C;&#x4E86;&#x3002;" class="headerlink" title="3.2 &#x5BF9;&#x4E8E;ViewModel&#x5904;&#x7406;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x8981;&#x600E;&#x4E48;&#x6837;&#x65E2;&#x80FD;&#x544A;&#x8BC9;Controller&#x53C8;&#x80FD;&#x544A;&#x8BC9;RootView&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x662F;Controller&#x548C;RootView&#x516C;&#x7528;&#x4E00;&#x4E2A;ViewModel&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x60F3;&#x548C;&#x8C01;&#x7ED1;&#x5B9A;&#x90FD;&#x884C;&#x4E86;&#x3002;"></a>3.2 &#x5BF9;&#x4E8E;ViewModel&#x5904;&#x7406;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x8981;&#x600E;&#x4E48;&#x6837;&#x65E2;&#x80FD;&#x544A;&#x8BC9;Controller&#x53C8;&#x80FD;&#x544A;&#x8BC9;RootView&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x662F;Controller&#x548C;RootView&#x516C;&#x7528;&#x4E00;&#x4E2A;ViewModel&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x60F3;&#x548C;&#x8C01;&#x7ED1;&#x5B9A;&#x90FD;&#x884C;&#x4E86;&#x3002;</h5><h5 id="3-3-&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x90FD;&#x8BA4;&#x4E3A;&#x5355;&#x72EC;&#x62BD;&#x51FA;&#x4E00;&#x4E2A;RootView&#x662F;&#x4E2A;&#x5F88;&#x4E0D;&#x9519;&#x7684;&#x51B3;&#x5B9A;&#xFF0C;&#x65E0;&#x8BBA;&#x7528;&#x54EA;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x6700;&#x540E;&#x65E0;&#x975E;&#x90FD;&#x662F;&#x4E3A;&#x4E86;&#x7ED9;Controller&#x51CF;&#x8D1F;&#xFF0C;&#x51CF;&#x5C11;Controller&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x91CF;&#xFF0C;&#x4F7F;&#x7ED3;&#x6784;&#x66F4;&#x6E05;&#x6670;&#x3002;&#x5176;&#x5B9E;&#x60F3;&#x60F3;&#x6BCF;&#x4E2A;&#x5DE5;&#x7A0B;&#x91CC;&#x90FD;&#x6709;&#x4E00;&#x4E2A;Window&#xFF0C;Window&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x5E55;&#x5E03;&#xFF0C;&#x6240;&#x6709;&#x7684;Controller&#x7684;&#x8868;&#x6F14;&#x90FD;&#x5728;&#x5E55;&#x5E03;&#x4E0A;&#x8FDB;&#x884C;&#x3002;&#x90A3;&#x73B0;&#x5728;&#x628A;Controller&#x7684;view&#x60F3;&#x8C61;&#x6210;&#x5E55;&#x5E03;&#xFF0C;&#x4F60;&#x6240;&#x6709;&#x5176;&#x4ED6;View&#x5C42;&#x7684;&#x8868;&#x6F14;&#x90FD;&#x81EA;&#x5DF1;&#x8FDB;&#x884C;&#xFF0C;&#x6700;&#x540E;&#x5728;&#x6211;&#x7684;view&#x91CC;&#x9762;&#x7EDF;&#x4E00;&#x653E;&#x6620;&#x8FDB;&#x884C;&#x4E86;&#xFF0C;&#x7BA1;&#x7406;&#x8005;&#x5C11;&#x4E86;&#x4E0D;&#x5C11;&#x5DE5;&#x4F5C;&#xFF0C;&#x7ACB;&#x9A6C;&#x5C31;&#x8F7B;&#x677E;&#x4E86;"><a href="#3-3-&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x90FD;&#x8BA4;&#x4E3A;&#x5355;&#x72EC;&#x62BD;&#x51FA;&#x4E00;&#x4E2A;RootView&#x662F;&#x4E2A;&#x5F88;&#x4E0D;&#x9519;&#x7684;&#x51B3;&#x5B9A;&#xFF0C;&#x65E0;&#x8BBA;&#x7528;&#x54EA;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x6700;&#x540E;&#x65E0;&#x975E;&#x90FD;&#x662F;&#x4E3A;&#x4E86;&#x7ED9;Controller&#x51CF;&#x8D1F;&#xFF0C;&#x51CF;&#x5C11;Controller&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x91CF;&#xFF0C;&#x4F7F;&#x7ED3;&#x6784;&#x66F4;&#x6E05;&#x6670;&#x3002;&#x5176;&#x5B9E;&#x60F3;&#x60F3;&#x6BCF;&#x4E2A;&#x5DE5;&#x7A0B;&#x91CC;&#x90FD;&#x6709;&#x4E00;&#x4E2A;Window&#xFF0C;Window&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x5E55;&#x5E03;&#xFF0C;&#x6240;&#x6709;&#x7684;Controller&#x7684;&#x8868;&#x6F14;&#x90FD;&#x5728;&#x5E55;&#x5E03;&#x4E0A;&#x8FDB;&#x884C;&#x3002;&#x90A3;&#x73B0;&#x5728;&#x628A;Controller&#x7684;view&#x60F3;&#x8C61;&#x6210;&#x5E55;&#x5E03;&#xFF0C;&#x4F60;&#x6240;&#x6709;&#x5176;&#x4ED6;View&#x5C42;&#x7684;&#x8868;&#x6F14;&#x90FD;&#x81EA;&#x5DF1;&#x8FDB;&#x884C;&#xFF0C;&#x6700;&#x540E;&#x5728;&#x6211;&#x7684;view&#x91CC;&#x9762;&#x7EDF;&#x4E00;&#x653E;&#x6620;&#x8FDB;&#x884C;&#x4E86;&#xFF0C;&#x7BA1;&#x7406;&#x8005;&#x5C11;&#x4E86;&#x4E0D;&#x5C11;&#x5DE5;&#x4F5C;&#xFF0C;&#x7ACB;&#x9A6C;&#x5C31;&#x8F7B;&#x677E;&#x4E86;" class="headerlink" title="3.3 &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x90FD;&#x8BA4;&#x4E3A;&#x5355;&#x72EC;&#x62BD;&#x51FA;&#x4E00;&#x4E2A;RootView&#x662F;&#x4E2A;&#x5F88;&#x4E0D;&#x9519;&#x7684;&#x51B3;&#x5B9A;&#xFF0C;&#x65E0;&#x8BBA;&#x7528;&#x54EA;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x6700;&#x540E;&#x65E0;&#x975E;&#x90FD;&#x662F;&#x4E3A;&#x4E86;&#x7ED9;Controller&#x51CF;&#x8D1F;&#xFF0C;&#x51CF;&#x5C11;Controller&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x91CF;&#xFF0C;&#x4F7F;&#x7ED3;&#x6784;&#x66F4;&#x6E05;&#x6670;&#x3002;&#x5176;&#x5B9E;&#x60F3;&#x60F3;&#x6BCF;&#x4E2A;&#x5DE5;&#x7A0B;&#x91CC;&#x90FD;&#x6709;&#x4E00;&#x4E2A;Window&#xFF0C;Window&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x5E55;&#x5E03;&#xFF0C;&#x6240;&#x6709;&#x7684;Controller&#x7684;&#x8868;&#x6F14;&#x90FD;&#x5728;&#x5E55;&#x5E03;&#x4E0A;&#x8FDB;&#x884C;&#x3002;&#x90A3;&#x73B0;&#x5728;&#x628A;Controller&#x7684;view&#x60F3;&#x8C61;&#x6210;&#x5E55;&#x5E03;&#xFF0C;&#x4F60;&#x6240;&#x6709;&#x5176;&#x4ED6;View&#x5C42;&#x7684;&#x8868;&#x6F14;&#x90FD;&#x81EA;&#x5DF1;&#x8FDB;&#x884C;&#xFF0C;&#x6700;&#x540E;&#x5728;&#x6211;&#x7684;view&#x91CC;&#x9762;&#x7EDF;&#x4E00;&#x653E;&#x6620;&#x8FDB;&#x884C;&#x4E86;&#xFF0C;&#x7BA1;&#x7406;&#x8005;&#x5C11;&#x4E86;&#x4E0D;&#x5C11;&#x5DE5;&#x4F5C;&#xFF0C;&#x7ACB;&#x9A6C;&#x5C31;&#x8F7B;&#x677E;&#x4E86;."></a>3.3 &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x90FD;&#x8BA4;&#x4E3A;&#x5355;&#x72EC;&#x62BD;&#x51FA;&#x4E00;&#x4E2A;RootView&#x662F;&#x4E2A;&#x5F88;&#x4E0D;&#x9519;&#x7684;&#x51B3;&#x5B9A;&#xFF0C;&#x65E0;&#x8BBA;&#x7528;&#x54EA;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x6700;&#x540E;&#x65E0;&#x975E;&#x90FD;&#x662F;&#x4E3A;&#x4E86;&#x7ED9;Controller&#x51CF;&#x8D1F;&#xFF0C;&#x51CF;&#x5C11;Controller&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x91CF;&#xFF0C;&#x4F7F;&#x7ED3;&#x6784;&#x66F4;&#x6E05;&#x6670;&#x3002;&#x5176;&#x5B9E;&#x60F3;&#x60F3;&#x6BCF;&#x4E2A;&#x5DE5;&#x7A0B;&#x91CC;&#x90FD;&#x6709;&#x4E00;&#x4E2A;Window&#xFF0C;Window&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x5E55;&#x5E03;&#xFF0C;&#x6240;&#x6709;&#x7684;Controller&#x7684;&#x8868;&#x6F14;&#x90FD;&#x5728;&#x5E55;&#x5E03;&#x4E0A;&#x8FDB;&#x884C;&#x3002;&#x90A3;&#x73B0;&#x5728;&#x628A;Controller&#x7684;view&#x60F3;&#x8C61;&#x6210;&#x5E55;&#x5E03;&#xFF0C;&#x4F60;&#x6240;&#x6709;&#x5176;&#x4ED6;View&#x5C42;&#x7684;&#x8868;&#x6F14;&#x90FD;&#x81EA;&#x5DF1;&#x8FDB;&#x884C;&#xFF0C;&#x6700;&#x540E;&#x5728;&#x6211;&#x7684;view&#x91CC;&#x9762;&#x7EDF;&#x4E00;&#x653E;&#x6620;&#x8FDB;&#x884C;&#x4E86;&#xFF0C;&#x7BA1;&#x7406;&#x8005;&#x5C11;&#x4E86;&#x4E0D;&#x5C11;&#x5DE5;&#x4F5C;&#xFF0C;&#x7ACB;&#x9A6C;&#x5C31;&#x8F7B;&#x677E;&#x4E86;.</h5><h4 id="4-&#x6700;&#x540E;&#x4E0A;&#x4EE3;&#x7801;&#x5427;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x4E2A;demo&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x5BF9;&#x5927;&#x5BB6;&#x6709;&#x6240;&#x5E2E;&#x52A9;&#x3002;github&#x5730;&#x5740;"><a href="#4-&#x6700;&#x540E;&#x4E0A;&#x4EE3;&#x7801;&#x5427;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x4E2A;demo&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x5BF9;&#x5927;&#x5BB6;&#x6709;&#x6240;&#x5E2E;&#x52A9;&#x3002;github&#x5730;&#x5740;" class="headerlink" title="4.&#x6700;&#x540E;&#x4E0A;&#x4EE3;&#x7801;&#x5427;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x4E2A;demo&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x5BF9;&#x5927;&#x5BB6;&#x6709;&#x6240;&#x5E2E;&#x52A9;&#x3002;github&#x5730;&#x5740;"></a>4.&#x6700;&#x540E;&#x4E0A;&#x4EE3;&#x7801;&#x5427;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x4E2A;demo&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x5BF9;&#x5927;&#x5BB6;&#x6709;&#x6240;&#x5E2E;&#x52A9;&#x3002;<a href="https://github.com/ZCLemo/MVVMDemo" target="_blank" rel="external">github&#x5730;&#x5740;</a></h4>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/14/photokit/" itemprop="url">
                   基于PhotoKit写的图片，视频选择器
                 </a>
@@ -1147,107 +1247,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/28/WebFont/" itemprop="url">
-                  改变webview加载页面的字体大小
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-28T16:53:50+08:00" content="2016-06-28">
-              2016-06-28
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/28/WebFont/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/WebFont/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="&#x4FEE;&#x6539;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x7528;&#x5230;&#x4E86;js"><a href="#&#x4FEE;&#x6539;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x7528;&#x5230;&#x4E86;js" class="headerlink" title="&#x4FEE;&#x6539;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x7528;&#x5230;&#x4E86;js"></a>&#x4FEE;&#x6539;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x7528;&#x5230;&#x4E86;js</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (IBAction)changeFont:(id)sender {</span><br><span class="line">    </span><br><span class="line">    NSString* str1 =[NSString stringWithFormat:@<span class="string">&quot;document.getElementsByTagName(&apos;body&apos;)[0].style.webkitTextSizeAdjust= &apos;%f%%&apos;&quot;</span>,20.0];</span><br><span class="line">    [_webView stringByEvaluatingJavaScriptFromString:str1];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1293,7 +1292,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1340,7 +1339,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
