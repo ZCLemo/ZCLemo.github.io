@@ -1,0 +1,609 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#xFF1A;&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x7531;&amp;#x4E8E;&amp;#x516C;&amp;#x53F8;&amp;#x4E1A;&amp;#x52A1;&amp;#x7684;&amp;#x9700;&amp;#x8981;&amp;#xFF0C;&amp;#x8981;&amp;#x6C42;&amp;#x5BF9;&amp;#x9879;&amp;#x76EE;&amp;#x8FDB;&amp;#x884C;&amp;#x7EC4;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ios组件化三种方案">
+<meta property="og:url" content="http://www.ZCLemo.com/2017/05/10/module/index.html">
+<meta property="og:site_name" content="ZCLemo的学习领域">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#xFF1A;&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x7531;&amp;#x4E8E;&amp;#x516C;&amp;#x53F8;&amp;#x4E1A;&amp;#x52A1;&amp;#x7684;&amp;#x9700;&amp;#x8981;&amp;#xFF0C;&amp;#x8981;&amp;#x6C42;&amp;#x5BF9;&amp;#x9879;&amp;#x76EE;&amp;#x8FDB;&amp;#x884C;&amp;#x7EC4;">
+<meta property="og:updated_time" content="2017-05-10T10:15:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ios组件化三种方案">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#xFF1A;&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x7531;&amp;#x4E8E;&amp;#x516C;&amp;#x53F8;&amp;#x4E1A;&amp;#x52A1;&amp;#x7684;&amp;#x9700;&amp;#x8981;&amp;#xFF0C;&amp;#x8981;&amp;#x6C42;&amp;#x5BF9;&amp;#x9879;&amp;#x76EE;&amp;#x8FDB;&amp;#x884C;&amp;#x7EC4;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ios组件化三种方案 | ZCLemo的学习领域 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZCLemo的学习领域</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">有时候，静下心来学习是一种享受！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://dn-zclemo.qbox.me/me.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ios组件化三种方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-10T18:15:58+08:00" content="2017-05-10">
+              2017-05-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/10/module/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/10/module/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="&#x524D;&#x8A00;&#xFF1A;"><a href="#&#x524D;&#x8A00;&#xFF1A;" class="headerlink" title="&#x524D;&#x8A00;&#xFF1A;"></a>&#x524D;&#x8A00;&#xFF1A;</h2><p>&#x524D;&#x6BB5;&#x65F6;&#x95F4;&#x7531;&#x4E8E;&#x516C;&#x53F8;&#x4E1A;&#x52A1;&#x7684;&#x9700;&#x8981;&#xFF0C;&#x8981;&#x6C42;&#x5BF9;&#x9879;&#x76EE;&#x8FDB;&#x884C;&#x7EC4;&#x4EF6;&#x5316;&#x7684;&#x62C6;&#x5206;&#xFF0C;&#x51CF;&#x5C11;&#x5404;&#x4E2A;&#x6A21;&#x5757;&#x4E4B;&#x95F4;&#x8026;&#x5408;&#x3002;&#x5E0C;&#x671B;&#x8FBE;&#x5230;&#x7684;&#x6548;&#x679C;&#x662F;&#x5404;&#x4E2A;&#x7EC4;&#x4EF6;&#x80FD;&#x5355;&#x72EC;&#x7684;&#x6253;&#x79C1;&#x6709;pod&#xFF0C;&#x65B9;&#x4FBF;&#x5728;&#x5176;&#x5B83;&#x5DE5;&#x7A0B;&#x91CC;&#x5F15;&#x7528;&#x3002;&#x7531;&#x4E8E;&#x9879;&#x76EE;&#x73B0;&#x5728;&#x6BD4;&#x8F83;&#x5E9E;&#x5927;&#xFF0C;&#x76EE;&#x524D;&#x53EA;&#x505A;&#x4E86;&#x672C;&#x5730;&#x62C6;&#x5206;&#x3002;&#x671F;&#x95F4;&#x5B66;&#x4E60;&#x4E86;&#x5F88;&#x591A;&#x6709;&#x5173;&#x7EC4;&#x4EF6;&#x5316;&#x65B9;&#x9762;&#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x73B0;&#x5728;&#x505A;&#x4E2A;&#x603B;&#x7ED3;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x6709;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x6848;&#x76F8;&#x5173;&#x7684;&#x8D44;&#x6599;&#x94FE;&#x63A5;&#x3002;&#x5148;&#x4E0A;&#x6211;&#x81EA;&#x5DF1;&#x5BF9;&#x4E8E;&#x4E09;&#x79CD;&#x65B9;&#x6848;&#x603B;&#x7ED3;&#x7684;&#x4E00;&#x4E2A;demo,<a href="https://github.com/ZCLemo/ZCModule" target="_blank" rel="external">github&#x5730;&#x5740;</a></p>
+<h2 id="&#x6982;&#x8FF0;&#xFF1A;"><a href="#&#x6982;&#x8FF0;&#xFF1A;" class="headerlink" title="&#x6982;&#x8FF0;&#xFF1A;"></a>&#x6982;&#x8FF0;&#xFF1A;</h2><p>&#x7EC4;&#x4EF6;&#x5316;&#x662F;&#x4E3A;&#x4E86;&#x5404;&#x4E2A;&#x6A21;&#x5757;&#x4E0D;&#x8FDB;&#x884C;&#x76F4;&#x63A5;&#x7684;&#x76F8;&#x4E92;&#x5F15;&#x7528;&#xFF0C;&#x964D;&#x4F4E;&#x8026;&#x5408;&#x5EA6;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;&#x7EC4;&#x4EF6;A&#x60F3;&#x8C03;&#x7528;&#x7EC4;&#x4EF6;B&#x7684;&#x65F6;&#x5019;&#x8981;&#x600E;&#x4E48;&#x529E;&#x5462;&#xFF0C;&#x5176;&#x5B9E;&#x539F;&#x7406;&#x4E0A;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x4E2D;&#x95F4;&#x4EF6;&#x6765;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x6A21;&#x5757;&#x95F4;&#x76F8;&#x4E92;&#x5F15;&#x7528;&#x3002; &#x6211;&#x4EEC;&#x6240;&#x770B;&#x5230;&#x7684;&#x7EC4;&#x4EF6;&#x5316;&#x65B9;&#x6848;&#xFF0C;&#x5927;&#x4F53;&#x603B;&#x7ED3;&#x6765;&#x8BF4;&#x6709;&#x4E09;&#x79CD;&#xFF1A;</p>
+<pre><code>- 1.procotol&#x65B9;&#x6848;
+- 2.URL&#x8DEF;&#x7531;&#x65B9;&#x6848;
+- 3.target-action&#x65B9;&#x6848;
+</code></pre><h3 id="&#x4E00;&#x3001;procotol&#x534F;&#x8BAE;&#x6CE8;&#x518C;&#x65B9;&#x6848;"><a href="#&#x4E00;&#x3001;procotol&#x534F;&#x8BAE;&#x6CE8;&#x518C;&#x65B9;&#x6848;" class="headerlink" title="&#x4E00;&#x3001;procotol&#x534F;&#x8BAE;&#x6CE8;&#x518C;&#x65B9;&#x6848;"></a>&#x4E00;&#x3001;procotol&#x534F;&#x8BAE;&#x6CE8;&#x518C;&#x65B9;&#x6848;</h3><p>&#x5173;&#x4E8E;procotol&#x534F;&#x8BAE;&#x6CE8;&#x518C;&#x65B9;&#x6848;&#x89C1;&#x5230;&#x522B;&#x4EBA;&#x5206;&#x4EAB;&#x6BD4;&#x8F83;&#x5C11;&#xFF0C;&#x6709;&#x6B21;&#x67E5;&#x8D44;&#x6599;&#x7684;&#x65F6;&#x5019;&#x770B;&#x5230;&#x4E86;&#xFF0C;&#x5C31;&#x7814;&#x7A76;&#x4E86;&#x4E00;&#x4E0B;&#x3002;<br>&#x5728;demo&#x4E2D;ProcotolManager&#x4F5C;&#x4E3A;&#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (void)registServiceProvide:(id)provide <span class="keyword">for</span>Procotol:(Protocol *)procotol;</span><br><span class="line"></span><br><span class="line">- (id)serviceProvideForProcotol:(Protocol *)procotol;</span><br></pre></td></tr></table></figure>
+<p>&#x6240;&#x6709;&#x7EC4;&#x4EF6;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x7684;procotol&#x548C;&#x7EC4;&#x4EF6;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x7531;&#x4E2D;&#x95F4;&#x4EF6;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#xFF0C;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x63D0;&#x4F9B;&#x7684;procotol&#x548C;&#x670D;&#x52A1;&#x662F;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#x3002;</p>
+<p>&#x5728;ProductDetailServiceProvide&#x4E2D;:load&#x65B9;&#x6CD5;&#x4F1A;&#x5E94;&#x7528;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#xFF0C;&#x5C31;&#x4F1A;&#x5728;ProcotolManager&#x8FDB;&#x884C;&#x6CE8;&#x518C;&#x3002;ProductDetailServiceProvide&#x9075;&#x5B88;&#x4E86;ProductDetailServiceProcotol&#x534F;&#x8BAE;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x80FD;&#x5916;&#x63D0;&#x4F9B;productDetailViewControllerWithProductId&#x670D;&#x52A1;&#x3002;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+ (void)load</span><br><span class="line">{</span><br><span class="line">    [[ProcotolManager sharedManger] registServiceProvide:[[self alloc] init] <span class="keyword">for</span>Procotol:@protocol(ProductDetailServiceProcotol)];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">- (UIViewController *)productDetailViewControllerWithProductId:(NSString *)productId</span><br><span class="line">{</span><br><span class="line">    ProcotolProductDetailViewController *detailVC = [[ProcotolProductDetailViewController alloc] init];</span><br><span class="line">    detailVC.productId = productId;</span><br><span class="line">    <span class="built_in">return</span> detailVC;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x6240;&#x4EE5;&#x5728;&#x9996;&#x9875;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;ProcotolManager&#x53D6;&#x51FA;ProductDetailServiceProcotol&#x5BF9;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;ProductDetailServiceProvide&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x4EA7;&#x54C1;&#x8BE6;&#x60C5;&#x4E2D;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#x3002;</p>
+<h3 id="&#x4E8C;&#x3001;URL&#x8DEF;&#x7531;&#x65B9;&#x6848;"><a href="#&#x4E8C;&#x3001;URL&#x8DEF;&#x7531;&#x65B9;&#x6848;" class="headerlink" title="&#x4E8C;&#x3001;URL&#x8DEF;&#x7531;&#x65B9;&#x6848;"></a>&#x4E8C;&#x3001;URL&#x8DEF;&#x7531;&#x65B9;&#x6848;</h3><p>URL&#x8DEF;&#x7531;&#x65B9;&#x6848;&#x53C2;&#x8003;&#x7684;&#x662F;&#x8611;&#x83C7;&#x8857;MGJRouter&#x65B9;&#x6848;<br><a href="https://github.com/ZCLemo/ZCModule" target="_blank" rel="external">&#x8611;&#x83C7;&#x8857; App &#x7684;&#x7EC4;&#x4EF6;&#x5316;&#x4E4B;&#x8DEF;</a>&#xFF0C;&#x8BB2;&#x7684;&#x6BD4;&#x8F83;&#x8BE6;&#x7EC6;&#x3002;</p>
+<h3 id="&#x4E09;&#x3001;target-action&#x65B9;&#x6848;"><a href="#&#x4E09;&#x3001;target-action&#x65B9;&#x6848;" class="headerlink" title="&#x4E09;&#x3001;target-action&#x65B9;&#x6848;"></a>&#x4E09;&#x3001;target-action&#x65B9;&#x6848;</h3><p>target-action&#x65B9;&#x6848;&#x662F;&#x5728;&#x5B66;&#x4E60;CTMediator&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x8FDB;&#x884C;&#x7684;&#xFF0C;ZCMediator&#x4F5C;&#x4E3A;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x91CC;&#x9762;&#x7684;&#x5B9E;&#x73B0;&#x4E5F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x3002;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (id)performTargetName:(NSString *)targetName actionName:(NSString *)actionName paramters:(NSDictionary *)paramtersDict;</span><br></pre></td></tr></table></figure>
+<p>&#x6267;&#x884C;&#x65F6;&#x67E5;&#x627E;&#x5BF9;&#x5E94;&#x7684;target&#x6709;&#x6CA1;&#x6709;&#x5BF9;&#x5916;&#x66B4;&#x9732;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5219;&#x6267;&#x884C;&#x3002;<br>&#x4E3B;&#x8981;&#x7684;&#x8FD8;&#x662F;&#x6BCF;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x66B4;&#x9732;&#x51FA;&#x7684;category&#xFF0C;&#x662F;&#x5BF9;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x4E00;&#x4E2A;&#x6269;&#x5C55;&#xFF0C;&#x8C03;&#x7528;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x5BF9;&#x5E94;&#x7684;category&#x65B9;&#x6CD5;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x901A;&#x8FC7;&#x4E2D;&#x95F4;&#x4EF6;&#x8C03;&#x7528;&#x5BF9;&#x5916;&#x66B4;&#x9732;&#x7684;&#x670D;&#x52A1;&#x3002;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#import &quot;ZCMediator+ProductDetail.h&quot;</span></span><br><span class="line"></span><br><span class="line">//target</span><br><span class="line">NSString *const MP_PRODUCT_DETAIL_TARGET = @<span class="string">&quot;ProductDetailTarget&quot;</span>;</span><br><span class="line"></span><br><span class="line">//&#x65B9;&#x6CD5;&#x540D;</span><br><span class="line">NSString *const MP_PRODUCT_DETAIL = @<span class="string">&quot;productDetailViewControllerWithParameters&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@implementation ZCMediator (ProductDetail)</span><br><span class="line"></span><br><span class="line">- (UIViewController *)productDetailViewControllerWithProductName:(NSString *)productName productId:(NSString *)productId</span><br><span class="line">{</span><br><span class="line">    <span class="keyword">if</span> (!productName || !productId) {</span><br><span class="line">        <span class="built_in">return</span> nil;</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">return</span> [self performTargetName:MP_PRODUCT_DETAIL_TARGET actionName:MP_PRODUCT_DETAIL paramters:@{@<span class="string">&quot;productName&quot;</span>:productName,@<span class="string">&quot;productId&quot;</span>:productId}];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x9879;&#x76EE;&#x91CC;&#x4F7F;&#x7528;&#x7684;&#x5C31;&#x662F;target-action&#x65B9;&#x6848;&#x3002;&#x4E0B;&#x6B21;&#x518D;&#x5199;&#x4E00;&#x7BC7;&#x51E0;&#x79CD;&#x65B9;&#x6848;&#x7684;&#x6BD4;&#x8F83;&#x5427;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;</p>
+<p><a href="http://www.jianshu.com/p/2cb4cc8d216e" target="_blank" rel="external">iOS&#x7EC4;&#x4EF6;&#x5316;&#x65B9;&#x6848;</a></p>
+<p><a href="https://casatwy.com/iOS-Modulization.html" target="_blank" rel="external">iOS&#x5E94;&#x7528;&#x67B6;&#x6784;&#x8C08; &#x7EC4;&#x4EF6;&#x5316;&#x65B9;&#x6848;</a></p>
+<p><a href="https://github.com/ZCLemo/ZCModule" target="_blank" rel="external">&#x8611;&#x83C7;&#x8857; App &#x7684;&#x7EC4;&#x4EF6;&#x5316;&#x4E4B;&#x8DEF;</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/mvvm/" rel="next" title="MVVM使用">
+                <i class="fa fa-chevron-left"></i> MVVM使用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/10/module/"
+           data-title="ios组件化三种方案" data-url="http://www.ZCLemo.com/2017/05/10/module/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://dn-zclemo.qbox.me/avater.png"
+               alt="赵琛" />
+          <p class="site-author-name" itemprop="name">赵琛</p>
+          <p class="site-description motion-element" itemprop="description">我是赵琛，一名iOS开发工程师！我的邮箱18356033655@163.com</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概述："><span class="nav-number">2.</span> <span class="nav-text">概述：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、procotol协议注册方案"><span class="nav-number">2.1.</span> <span class="nav-text">一、procotol协议注册方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、URL路由方案"><span class="nav-number">2.2.</span> <span class="nav-text">二、URL路由方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、target-action方案"><span class="nav-number">2.3.</span> <span class="nav-text">三、target-action方案</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵琛</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zclemo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
