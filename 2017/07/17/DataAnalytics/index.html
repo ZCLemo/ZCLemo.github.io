@@ -1,0 +1,588 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1.&amp;#x6700;&amp;#x8FD1;&amp;#x516C;&amp;#x53F8;&amp;#x505A;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x5173;&amp;#x4E8E;&amp;#x9AD8;&amp;#x7AEF;&amp;#x7406;&amp;#x8D22;&amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#xFF0C;&amp;#x4E4B;&amp;#x524D;&amp;#x4E00;&amp;#x4E9B;&amp;#x9879;&amp;#x76EE;&amp;#x4E3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据埋点">
+<meta property="og:url" content="http://www.ZCLemo.com/2017/07/17/DataAnalytics/index.html">
+<meta property="og:site_name" content="ZCLemo的学习领域">
+<meta property="og:description" content="1.&amp;#x6700;&amp;#x8FD1;&amp;#x516C;&amp;#x53F8;&amp;#x505A;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x5173;&amp;#x4E8E;&amp;#x9AD8;&amp;#x7AEF;&amp;#x7406;&amp;#x8D22;&amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#xFF0C;&amp;#x4E4B;&amp;#x524D;&amp;#x4E00;&amp;#x4E9B;&amp;#x9879;&amp;#x76EE;&amp;#x4E3">
+<meta property="og:updated_time" content="2017-07-17T12:27:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据埋点">
+<meta name="twitter:description" content="1.&amp;#x6700;&amp;#x8FD1;&amp;#x516C;&amp;#x53F8;&amp;#x505A;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x5173;&amp;#x4E8E;&amp;#x9AD8;&amp;#x7AEF;&amp;#x7406;&amp;#x8D22;&amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#xFF0C;&amp;#x4E4B;&amp;#x524D;&amp;#x4E00;&amp;#x4E9B;&amp;#x9879;&amp;#x76EE;&amp;#x4E3">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 数据埋点 | ZCLemo的学习领域 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZCLemo的学习领域</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">有时候，静下心来学习是一种享受！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://dn-zclemo.qbox.me/me.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据埋点
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-17T20:26:55+08:00" content="2017-07-17">
+              2017-07-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/17/DataAnalytics/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/17/DataAnalytics/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-&#x6700;&#x8FD1;&#x516C;&#x53F8;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x9AD8;&#x7AEF;&#x7406;&#x8D22;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x4E4B;&#x524D;&#x4E00;&#x4E9B;&#x9879;&#x76EE;&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x7B2C;&#x4E09;&#x65B9;&#x201C;&#x53CB;&#x76DF;&#x201D;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7EDF;&#x8BA1;&#x3002;&#x8FD9;&#x6B21;&#x516C;&#x53F8;&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x63D0;&#x51FA;&#x4E86;&#x6570;&#x636E;&#x57CB;&#x70B9;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x81EA;&#x5DF1;&#x91C7;&#x96C6;&#x4F7F;&#x7528;app&#x4EBA;&#x7FA4;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x81EA;&#x5DF1;&#x5728;&#x540E;&#x53F0;&#x8FDB;&#x884C;&#x5927;&#x6570;&#x636E;&#x7684;&#x5206;&#x6790;&#x3002;"><a href="#1-&#x6700;&#x8FD1;&#x516C;&#x53F8;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x9AD8;&#x7AEF;&#x7406;&#x8D22;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x4E4B;&#x524D;&#x4E00;&#x4E9B;&#x9879;&#x76EE;&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x7B2C;&#x4E09;&#x65B9;&#x201C;&#x53CB;&#x76DF;&#x201D;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7EDF;&#x8BA1;&#x3002;&#x8FD9;&#x6B21;&#x516C;&#x53F8;&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x63D0;&#x51FA;&#x4E86;&#x6570;&#x636E;&#x57CB;&#x70B9;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x81EA;&#x5DF1;&#x91C7;&#x96C6;&#x4F7F;&#x7528;app&#x4EBA;&#x7FA4;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x81EA;&#x5DF1;&#x5728;&#x540E;&#x53F0;&#x8FDB;&#x884C;&#x5927;&#x6570;&#x636E;&#x7684;&#x5206;&#x6790;&#x3002;" class="headerlink" title="1.&#x6700;&#x8FD1;&#x516C;&#x53F8;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x9AD8;&#x7AEF;&#x7406;&#x8D22;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x4E4B;&#x524D;&#x4E00;&#x4E9B;&#x9879;&#x76EE;&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x7B2C;&#x4E09;&#x65B9;&#x201C;&#x53CB;&#x76DF;&#x201D;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7EDF;&#x8BA1;&#x3002;&#x8FD9;&#x6B21;&#x516C;&#x53F8;&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x63D0;&#x51FA;&#x4E86;&#x6570;&#x636E;&#x57CB;&#x70B9;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x81EA;&#x5DF1;&#x91C7;&#x96C6;&#x4F7F;&#x7528;app&#x4EBA;&#x7FA4;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x81EA;&#x5DF1;&#x5728;&#x540E;&#x53F0;&#x8FDB;&#x884C;&#x5927;&#x6570;&#x636E;&#x7684;&#x5206;&#x6790;&#x3002;"></a>1.&#x6700;&#x8FD1;&#x516C;&#x53F8;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x9AD8;&#x7AEF;&#x7406;&#x8D22;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x4E4B;&#x524D;&#x4E00;&#x4E9B;&#x9879;&#x76EE;&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x7B2C;&#x4E09;&#x65B9;&#x201C;&#x53CB;&#x76DF;&#x201D;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7EDF;&#x8BA1;&#x3002;&#x8FD9;&#x6B21;&#x516C;&#x53F8;&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x63D0;&#x51FA;&#x4E86;&#x6570;&#x636E;&#x57CB;&#x70B9;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x81EA;&#x5DF1;&#x91C7;&#x96C6;&#x4F7F;&#x7528;app&#x4EBA;&#x7FA4;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x81EA;&#x5DF1;&#x5728;&#x540E;&#x53F0;&#x8FDB;&#x884C;&#x5927;&#x6570;&#x636E;&#x7684;&#x5206;&#x6790;&#x3002;</h4><h4 id="2-&#x57CB;&#x70B9;&#x5206;&#x4E3A;&#x9875;&#x9762;&#x7EDF;&#x8BA1;&#x548C;&#x4E8B;&#x4EF6;&#x7EDF;&#x8BA1;&#xFF0C;&#x516C;&#x53F8;&#x4E3A;&#x9879;&#x76EE;&#x4E2D;&#x6BCF;&#x4E2A;&#x9875;&#x9762;&#x5B9A;&#x4E49;&#x4E86;&#x552F;&#x4E00;&#x7684;pageId-&#x5C31;&#x4E3A;&#x4E86;&#x8FD9;&#x4EF6;&#x4E8B;&#x6211;&#x4EEC;&#x548C;&#x4EA7;&#x54C1;&#x4E89;&#x8BBA;&#x4E86;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x5BA2;&#x6237;&#x7AEF;&#x5E0C;&#x671B;&#x6211;&#x4EEC;&#x53EA;&#x4F20;&#x9875;&#x9762;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x540D;&#xFF0C;&#x7136;&#x540E;&#x540E;&#x53F0;&#x6839;&#x636E;&#x6570;&#x636E;&#x81EA;&#x5DF1;&#x5173;&#x8054;&#x3002;&#x4EA7;&#x54C1;&#x53C8;&#x8BF4;&#x5B89;&#x5353;&#x548C;iOS&#x7684;&#x7C7B;&#x540D;&#x53EF;&#x80FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x4ED6;&#x4EEC;&#x4E0D;&#x80FD;&#x7EDF;&#x4E00;&#x3002;&#x6211;&#x4EEC;&#x53C8;&#x7ED9;&#x51FA;&#x4E86;&#x65B9;&#x6848;&#xFF0C;&#x6211;&#x4EEC;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x201D;type&#x201D;&#x7528;&#x6765;&#x533A;&#x5206;&#x662F;&#x5B89;&#x5353;&#x8FD8;&#x662F;iOS&#xFF0C;&#x7136;&#x540E;&#x4F60;&#x4EEC;&#x81EA;&#x5DF1;&#x5728;&#x5173;&#x8054;&#x3002;&#x540E;&#x6765;&#x8FD8;&#x662F;&#x80F3;&#x818A;&#x626D;&#x4E0D;&#x8FC7;&#x5927;&#x817F;&#xFF0C;pageId&#x4F20;&#x4E86;&#xFF0C;&#x201D;type&#x201D;&#x4E5F;&#x4F20;&#x4E86;&#x3002;&#x3002;&#x3002;&#x5E72;&#x4E0D;&#x8FC7;&#x90A3;&#x5C31;&#x60F3;&#x529E;&#x6CD5;&#x505A;&#x5427;&#xFF0C;&#x9875;&#x9762;&#x600E;&#x4E48;&#x548C;pageId&#x5173;&#x8054;&#x5C31;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x65E2;&#x7136;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#xFF0C;&#x6211;&#x5C31;&#x60F3;&#x5230;&#x4E86;&#x5B57;&#x5178;&#xFF0C;&#x90A3;&#x5C31;&#x5199;&#x5728;&#x4E00;&#x4E2A;&#x672C;&#x5730;plist&#x6587;&#x4EF6;&#x91CC;&#x5427;&#x3002;&#x6BCF;&#x6B21;&#x8FDB;&#x5165;&#x9875;&#x9762;&#x548C;&#x79BB;&#x5F00;&#x9875;&#x9762;&#x90FD;&#x8981;&#x53BB;plist&#x53BB;&#x53D6;&#xFF0C;&#x4E5F;&#x4E0D;&#x592A;&#x5408;&#x9002;&#xFF0C;&#x6211;&#x5C31;&#x5199;&#x4E86;&#x5355;&#x4F8B;&#xFF0C;&#x53EA;&#x8BFB;&#x53D6;&#x4E00;&#x6B21;plist&#x3002;&#x4F46;&#x662F;&#x8FD8;&#x8981;&#x6BCF;&#x6B21;&#x53BB;&#x5355;&#x4F8B;&#x91CC;&#x53BB;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x540E;&#x6765;&#x53C8;&#x60F3;&#x4E86;&#x4E00;&#x4E2A;&#x529E;&#x6CD5;&#xFF0C;&#x7ED9;&#x57FA;&#x7C7B;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x5230;&#x4E86;&#x5C31;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#xFF0C;&#x53EA;&#x8981;&#x9875;&#x9762;&#x6CA1;&#x6709;&#x88AB;&#x9500;&#x8D27;&#xFF0C;&#x6BCF;&#x6B21;&#x5C31;&#x4E0D;&#x8981;&#x91CD;&#x65B0;&#x53D6;&#x4E86;&#xFF0C;&#x4E5F;&#x7B97;&#x662F;&#x505A;&#x5230;&#x4E86;&#x6027;&#x80FD;&#x65B9;&#x9762;&#x7684;&#x4F18;&#x5316;&#x5427;&#x3002;"><a href="#2-&#x57CB;&#x70B9;&#x5206;&#x4E3A;&#x9875;&#x9762;&#x7EDF;&#x8BA1;&#x548C;&#x4E8B;&#x4EF6;&#x7EDF;&#x8BA1;&#xFF0C;&#x516C;&#x53F8;&#x4E3A;&#x9879;&#x76EE;&#x4E2D;&#x6BCF;&#x4E2A;&#x9875;&#x9762;&#x5B9A;&#x4E49;&#x4E86;&#x552F;&#x4E00;&#x7684;pageId-&#x5C31;&#x4E3A;&#x4E86;&#x8FD9;&#x4EF6;&#x4E8B;&#x6211;&#x4EEC;&#x548C;&#x4EA7;&#x54C1;&#x4E89;&#x8BBA;&#x4E86;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x5BA2;&#x6237;&#x7AEF;&#x5E0C;&#x671B;&#x6211;&#x4EEC;&#x53EA;&#x4F20;&#x9875;&#x9762;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x540D;&#xFF0C;&#x7136;&#x540E;&#x540E;&#x53F0;&#x6839;&#x636E;&#x6570;&#x636E;&#x81EA;&#x5DF1;&#x5173;&#x8054;&#x3002;&#x4EA7;&#x54C1;&#x53C8;&#x8BF4;&#x5B89;&#x5353;&#x548C;iOS&#x7684;&#x7C7B;&#x540D;&#x53EF;&#x80FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x4ED6;&#x4EEC;&#x4E0D;&#x80FD;&#x7EDF;&#x4E00;&#x3002;&#x6211;&#x4EEC;&#x53C8;&#x7ED9;&#x51FA;&#x4E86;&#x65B9;&#x6848;&#xFF0C;&#x6211;&#x4EEC;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x201D;type&#x201D;&#x7528;&#x6765;&#x533A;&#x5206;&#x662F;&#x5B89;&#x5353;&#x8FD8;&#x662F;iOS&#xFF0C;&#x7136;&#x540E;&#x4F60;&#x4EEC;&#x81EA;&#x5DF1;&#x5728;&#x5173;&#x8054;&#x3002;&#x540E;&#x6765;&#x8FD8;&#x662F;&#x80F3;&#x818A;&#x626D;&#x4E0D;&#x8FC7;&#x5927;&#x817F;&#xFF0C;pageId&#x4F20;&#x4E86;&#xFF0C;&#x201D;type&#x201D;&#x4E5F;&#x4F20;&#x4E86;&#x3002;&#x3002;&#x3002;&#x5E72;&#x4E0D;&#x8FC7;&#x90A3;&#x5C31;&#x60F3;&#x529E;&#x6CD5;&#x505A;&#x5427;&#xFF0C;&#x9875;&#x9762;&#x600E;&#x4E48;&#x548C;pageId&#x5173;&#x8054;&#x5C31;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x65E2;&#x7136;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#xFF0C;&#x6211;&#x5C31;&#x60F3;&#x5230;&#x4E86;&#x5B57;&#x5178;&#xFF0C;&#x90A3;&#x5C31;&#x5199;&#x5728;&#x4E00;&#x4E2A;&#x672C;&#x5730;plist&#x6587;&#x4EF6;&#x91CC;&#x5427;&#x3002;&#x6BCF;&#x6B21;&#x8FDB;&#x5165;&#x9875;&#x9762;&#x548C;&#x79BB;&#x5F00;&#x9875;&#x9762;&#x90FD;&#x8981;&#x53BB;plist&#x53BB;&#x53D6;&#xFF0C;&#x4E5F;&#x4E0D;&#x592A;&#x5408;&#x9002;&#xFF0C;&#x6211;&#x5C31;&#x5199;&#x4E86;&#x5355;&#x4F8B;&#xFF0C;&#x53EA;&#x8BFB;&#x53D6;&#x4E00;&#x6B21;plist&#x3002;&#x4F46;&#x662F;&#x8FD8;&#x8981;&#x6BCF;&#x6B21;&#x53BB;&#x5355;&#x4F8B;&#x91CC;&#x53BB;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x540E;&#x6765;&#x53C8;&#x60F3;&#x4E86;&#x4E00;&#x4E2A;&#x529E;&#x6CD5;&#xFF0C;&#x7ED9;&#x57FA;&#x7C7B;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x5230;&#x4E86;&#x5C31;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#xFF0C;&#x53EA;&#x8981;&#x9875;&#x9762;&#x6CA1;&#x6709;&#x88AB;&#x9500;&#x8D27;&#xFF0C;&#x6BCF;&#x6B21;&#x5C31;&#x4E0D;&#x8981;&#x91CD;&#x65B0;&#x53D6;&#x4E86;&#xFF0C;&#x4E5F;&#x7B97;&#x662F;&#x505A;&#x5230;&#x4E86;&#x6027;&#x80FD;&#x65B9;&#x9762;&#x7684;&#x4F18;&#x5316;&#x5427;&#x3002;" class="headerlink" title="2.&#x57CB;&#x70B9;&#x5206;&#x4E3A;&#x9875;&#x9762;&#x7EDF;&#x8BA1;&#x548C;&#x4E8B;&#x4EF6;&#x7EDF;&#x8BA1;&#xFF0C;&#x516C;&#x53F8;&#x4E3A;&#x9879;&#x76EE;&#x4E2D;&#x6BCF;&#x4E2A;&#x9875;&#x9762;&#x5B9A;&#x4E49;&#x4E86;&#x552F;&#x4E00;&#x7684;pageId,&#x5C31;&#x4E3A;&#x4E86;&#x8FD9;&#x4EF6;&#x4E8B;&#x6211;&#x4EEC;&#x548C;&#x4EA7;&#x54C1;&#x4E89;&#x8BBA;&#x4E86;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x5BA2;&#x6237;&#x7AEF;&#x5E0C;&#x671B;&#x6211;&#x4EEC;&#x53EA;&#x4F20;&#x9875;&#x9762;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x540D;&#xFF0C;&#x7136;&#x540E;&#x540E;&#x53F0;&#x6839;&#x636E;&#x6570;&#x636E;&#x81EA;&#x5DF1;&#x5173;&#x8054;&#x3002;&#x4EA7;&#x54C1;&#x53C8;&#x8BF4;&#x5B89;&#x5353;&#x548C;iOS&#x7684;&#x7C7B;&#x540D;&#x53EF;&#x80FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x4ED6;&#x4EEC;&#x4E0D;&#x80FD;&#x7EDF;&#x4E00;&#x3002;&#x6211;&#x4EEC;&#x53C8;&#x7ED9;&#x51FA;&#x4E86;&#x65B9;&#x6848;&#xFF0C;&#x6211;&#x4EEC;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x201D;type&#x201D;&#x7528;&#x6765;&#x533A;&#x5206;&#x662F;&#x5B89;&#x5353;&#x8FD8;&#x662F;iOS&#xFF0C;&#x7136;&#x540E;&#x4F60;&#x4EEC;&#x81EA;&#x5DF1;&#x5728;&#x5173;&#x8054;&#x3002;&#x540E;&#x6765;&#x8FD8;&#x662F;&#x80F3;&#x818A;&#x626D;&#x4E0D;&#x8FC7;&#x5927;&#x817F;&#xFF0C;pageId&#x4F20;&#x4E86;&#xFF0C;&#x201D;type&#x201D;&#x4E5F;&#x4F20;&#x4E86;&#x3002;&#x3002;&#x3002;&#x5E72;&#x4E0D;&#x8FC7;&#x90A3;&#x5C31;&#x60F3;&#x529E;&#x6CD5;&#x505A;&#x5427;&#xFF0C;&#x9875;&#x9762;&#x600E;&#x4E48;&#x548C;pageId&#x5173;&#x8054;&#x5C31;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x65E2;&#x7136;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#xFF0C;&#x6211;&#x5C31;&#x60F3;&#x5230;&#x4E86;&#x5B57;&#x5178;&#xFF0C;&#x90A3;&#x5C31;&#x5199;&#x5728;&#x4E00;&#x4E2A;&#x672C;&#x5730;plist&#x6587;&#x4EF6;&#x91CC;&#x5427;&#x3002;&#x6BCF;&#x6B21;&#x8FDB;&#x5165;&#x9875;&#x9762;&#x548C;&#x79BB;&#x5F00;&#x9875;&#x9762;&#x90FD;&#x8981;&#x53BB;plist&#x53BB;&#x53D6;&#xFF0C;&#x4E5F;&#x4E0D;&#x592A;&#x5408;&#x9002;&#xFF0C;&#x6211;&#x5C31;&#x5199;&#x4E86;&#x5355;&#x4F8B;&#xFF0C;&#x53EA;&#x8BFB;&#x53D6;&#x4E00;&#x6B21;plist&#x3002;&#x4F46;&#x662F;&#x8FD8;&#x8981;&#x6BCF;&#x6B21;&#x53BB;&#x5355;&#x4F8B;&#x91CC;&#x53BB;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x540E;&#x6765;&#x53C8;&#x60F3;&#x4E86;&#x4E00;&#x4E2A;&#x529E;&#x6CD5;&#xFF0C;&#x7ED9;&#x57FA;&#x7C7B;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x5230;&#x4E86;&#x5C31;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#xFF0C;&#x53EA;&#x8981;&#x9875;&#x9762;&#x6CA1;&#x6709;&#x88AB;&#x9500;&#x8D27;&#xFF0C;&#x6BCF;&#x6B21;&#x5C31;&#x4E0D;&#x8981;&#x91CD;&#x65B0;&#x53D6;&#x4E86;&#xFF0C;&#x4E5F;&#x7B97;&#x662F;&#x505A;&#x5230;&#x4E86;&#x6027;&#x80FD;&#x65B9;&#x9762;&#x7684;&#x4F18;&#x5316;&#x5427;&#x3002;"></a>2.&#x57CB;&#x70B9;&#x5206;&#x4E3A;&#x9875;&#x9762;&#x7EDF;&#x8BA1;&#x548C;&#x4E8B;&#x4EF6;&#x7EDF;&#x8BA1;&#xFF0C;&#x516C;&#x53F8;&#x4E3A;&#x9879;&#x76EE;&#x4E2D;&#x6BCF;&#x4E2A;&#x9875;&#x9762;&#x5B9A;&#x4E49;&#x4E86;&#x552F;&#x4E00;&#x7684;pageId,&#x5C31;&#x4E3A;&#x4E86;&#x8FD9;&#x4EF6;&#x4E8B;&#x6211;&#x4EEC;&#x548C;&#x4EA7;&#x54C1;&#x4E89;&#x8BBA;&#x4E86;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x5BA2;&#x6237;&#x7AEF;&#x5E0C;&#x671B;&#x6211;&#x4EEC;&#x53EA;&#x4F20;&#x9875;&#x9762;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x540D;&#xFF0C;&#x7136;&#x540E;&#x540E;&#x53F0;&#x6839;&#x636E;&#x6570;&#x636E;&#x81EA;&#x5DF1;&#x5173;&#x8054;&#x3002;&#x4EA7;&#x54C1;&#x53C8;&#x8BF4;&#x5B89;&#x5353;&#x548C;iOS&#x7684;&#x7C7B;&#x540D;&#x53EF;&#x80FD;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x4ED6;&#x4EEC;&#x4E0D;&#x80FD;&#x7EDF;&#x4E00;&#x3002;&#x6211;&#x4EEC;&#x53C8;&#x7ED9;&#x51FA;&#x4E86;&#x65B9;&#x6848;&#xFF0C;&#x6211;&#x4EEC;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x201D;type&#x201D;&#x7528;&#x6765;&#x533A;&#x5206;&#x662F;&#x5B89;&#x5353;&#x8FD8;&#x662F;iOS&#xFF0C;&#x7136;&#x540E;&#x4F60;&#x4EEC;&#x81EA;&#x5DF1;&#x5728;&#x5173;&#x8054;&#x3002;&#x540E;&#x6765;&#x8FD8;&#x662F;&#x80F3;&#x818A;&#x626D;&#x4E0D;&#x8FC7;&#x5927;&#x817F;&#xFF0C;pageId&#x4F20;&#x4E86;&#xFF0C;&#x201D;type&#x201D;&#x4E5F;&#x4F20;&#x4E86;&#x3002;&#x3002;&#x3002;&#x5E72;&#x4E0D;&#x8FC7;&#x90A3;&#x5C31;&#x60F3;&#x529E;&#x6CD5;&#x505A;&#x5427;&#xFF0C;&#x9875;&#x9762;&#x600E;&#x4E48;&#x548C;pageId&#x5173;&#x8054;&#x5C31;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x65E2;&#x7136;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#xFF0C;&#x6211;&#x5C31;&#x60F3;&#x5230;&#x4E86;&#x5B57;&#x5178;&#xFF0C;&#x90A3;&#x5C31;&#x5199;&#x5728;&#x4E00;&#x4E2A;&#x672C;&#x5730;plist&#x6587;&#x4EF6;&#x91CC;&#x5427;&#x3002;&#x6BCF;&#x6B21;&#x8FDB;&#x5165;&#x9875;&#x9762;&#x548C;&#x79BB;&#x5F00;&#x9875;&#x9762;&#x90FD;&#x8981;&#x53BB;plist&#x53BB;&#x53D6;&#xFF0C;&#x4E5F;&#x4E0D;&#x592A;&#x5408;&#x9002;&#xFF0C;&#x6211;&#x5C31;&#x5199;&#x4E86;&#x5355;&#x4F8B;&#xFF0C;&#x53EA;&#x8BFB;&#x53D6;&#x4E00;&#x6B21;plist&#x3002;&#x4F46;&#x662F;&#x8FD8;&#x8981;&#x6BCF;&#x6B21;&#x53BB;&#x5355;&#x4F8B;&#x91CC;&#x53BB;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x540E;&#x6765;&#x53C8;&#x60F3;&#x4E86;&#x4E00;&#x4E2A;&#x529E;&#x6CD5;&#xFF0C;&#x7ED9;&#x57FA;&#x7C7B;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x5230;&#x4E86;&#x5C31;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#xFF0C;&#x53EA;&#x8981;&#x9875;&#x9762;&#x6CA1;&#x6709;&#x88AB;&#x9500;&#x8D27;&#xFF0C;&#x6BCF;&#x6B21;&#x5C31;&#x4E0D;&#x8981;&#x91CD;&#x65B0;&#x53D6;&#x4E86;&#xFF0C;&#x4E5F;&#x7B97;&#x662F;&#x505A;&#x5230;&#x4E86;&#x6027;&#x80FD;&#x65B9;&#x9762;&#x7684;&#x4F18;&#x5316;&#x5427;&#x3002;</h4><h4 id="3-&#x4E8B;&#x4EF6;&#x7EDF;&#x8BA1;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;id-&#x6240;&#x4EE5;&#x53EA;&#x8981;&#x786C;&#x7F16;&#x7801;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;id&#xFF0C;&#x5728;&#x9700;&#x8981;&#x52A0;&#x7684;&#x5730;&#x65B9;&#x52A0;&#x4E00;&#x4E0B;&#x5C31;&#x884C;&#x4E86;-&#x548C;&#x53CB;&#x76DF;&#x7684;mobClick&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#x3002;"><a href="#3-&#x4E8B;&#x4EF6;&#x7EDF;&#x8BA1;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;id-&#x6240;&#x4EE5;&#x53EA;&#x8981;&#x786C;&#x7F16;&#x7801;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;id&#xFF0C;&#x5728;&#x9700;&#x8981;&#x52A0;&#x7684;&#x5730;&#x65B9;&#x52A0;&#x4E00;&#x4E0B;&#x5C31;&#x884C;&#x4E86;-&#x548C;&#x53CB;&#x76DF;&#x7684;mobClick&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#x3002;" class="headerlink" title="3.&#x4E8B;&#x4EF6;&#x7EDF;&#x8BA1;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;id,&#x6240;&#x4EE5;&#x53EA;&#x8981;&#x786C;&#x7F16;&#x7801;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;id&#xFF0C;&#x5728;&#x9700;&#x8981;&#x52A0;&#x7684;&#x5730;&#x65B9;&#x52A0;&#x4E00;&#x4E0B;&#x5C31;&#x884C;&#x4E86;,&#x548C;&#x53CB;&#x76DF;&#x7684;mobClick&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#x3002;"></a>3.&#x4E8B;&#x4EF6;&#x7EDF;&#x8BA1;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;id,&#x6240;&#x4EE5;&#x53EA;&#x8981;&#x786C;&#x7F16;&#x7801;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;id&#xFF0C;&#x5728;&#x9700;&#x8981;&#x52A0;&#x7684;&#x5730;&#x65B9;&#x52A0;&#x4E00;&#x4E0B;&#x5C31;&#x884C;&#x4E86;,&#x548C;&#x53CB;&#x76DF;&#x7684;mobClick&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#x3002;</h4><h4 id="4-&#x4E8B;&#x4EF6;&#x548C;&#x9875;&#x9762;&#x57CB;&#x70B9;&#x6570;&#x636E;&#x90FD;&#x5B58;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x7684;&#x6761;&#x6570;&#x5C31;&#x4E0A;&#x4F20;&#xFF0C;&#x4F20;&#x5B8C;&#x5C31;&#x5220;&#x9664;&#x3002;&#x6211;&#x4E5F;&#x9650;&#x5236;&#x4E86;&#x6700;&#x5927;&#x5B58;&#x50A8;&#x6761;&#x6570;&#xFF0C;&#x4EE5;&#x9632;&#x5728;&#x65AD;&#x7F51;&#x548C;&#x670D;&#x52A1;&#x5668;&#x5F02;&#x5E38;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x65E0;&#x9650;&#x5236;&#x7684;&#x5F80;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x3002;"><a href="#4-&#x4E8B;&#x4EF6;&#x548C;&#x9875;&#x9762;&#x57CB;&#x70B9;&#x6570;&#x636E;&#x90FD;&#x5B58;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x7684;&#x6761;&#x6570;&#x5C31;&#x4E0A;&#x4F20;&#xFF0C;&#x4F20;&#x5B8C;&#x5C31;&#x5220;&#x9664;&#x3002;&#x6211;&#x4E5F;&#x9650;&#x5236;&#x4E86;&#x6700;&#x5927;&#x5B58;&#x50A8;&#x6761;&#x6570;&#xFF0C;&#x4EE5;&#x9632;&#x5728;&#x65AD;&#x7F51;&#x548C;&#x670D;&#x52A1;&#x5668;&#x5F02;&#x5E38;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x65E0;&#x9650;&#x5236;&#x7684;&#x5F80;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x3002;" class="headerlink" title="4.&#x4E8B;&#x4EF6;&#x548C;&#x9875;&#x9762;&#x57CB;&#x70B9;&#x6570;&#x636E;&#x90FD;&#x5B58;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x7684;&#x6761;&#x6570;&#x5C31;&#x4E0A;&#x4F20;&#xFF0C;&#x4F20;&#x5B8C;&#x5C31;&#x5220;&#x9664;&#x3002;&#x6211;&#x4E5F;&#x9650;&#x5236;&#x4E86;&#x6700;&#x5927;&#x5B58;&#x50A8;&#x6761;&#x6570;&#xFF0C;&#x4EE5;&#x9632;&#x5728;&#x65AD;&#x7F51;&#x548C;&#x670D;&#x52A1;&#x5668;&#x5F02;&#x5E38;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x65E0;&#x9650;&#x5236;&#x7684;&#x5F80;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x3002;"></a>4.&#x4E8B;&#x4EF6;&#x548C;&#x9875;&#x9762;&#x57CB;&#x70B9;&#x6570;&#x636E;&#x90FD;&#x5B58;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x7684;&#x6761;&#x6570;&#x5C31;&#x4E0A;&#x4F20;&#xFF0C;&#x4F20;&#x5B8C;&#x5C31;&#x5220;&#x9664;&#x3002;&#x6211;&#x4E5F;&#x9650;&#x5236;&#x4E86;&#x6700;&#x5927;&#x5B58;&#x50A8;&#x6761;&#x6570;&#xFF0C;&#x4EE5;&#x9632;&#x5728;&#x65AD;&#x7F51;&#x548C;&#x670D;&#x52A1;&#x5668;&#x5F02;&#x5E38;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x65E0;&#x9650;&#x5236;&#x7684;&#x5F80;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x3002;</h4><h4 id="5-&#x6700;&#x540E;&#x4E0A;Demo-github&#x5730;&#x5740;"><a href="#5-&#x6700;&#x540E;&#x4E0A;Demo-github&#x5730;&#x5740;" class="headerlink" title="5.&#x6700;&#x540E;&#x4E0A;Demo,github&#x5730;&#x5740;"></a>5.&#x6700;&#x540E;&#x4E0A;Demo,<a href="https://github.com/ZCLemo/ZCDataAnalytics" target="_blank" rel="external">github&#x5730;&#x5740;</a></h4>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/10/module/" rel="next" title="ios组件化三种方案">
+                <i class="fa fa-chevron-left"></i> ios组件化三种方案
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/07/17/DataAnalytics/"
+           data-title="数据埋点" data-url="http://www.ZCLemo.com/2017/07/17/DataAnalytics/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://dn-zclemo.qbox.me/avater.png"
+               alt="赵琛" />
+          <p class="site-author-name" itemprop="name">赵琛</p>
+          <p class="site-description motion-element" itemprop="description">我是赵琛，一名iOS开发工程师！我的邮箱18356033655@163.com</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-最近公司做了一个关于高端理财的项目，之前一些项目主要是通过第三方“友盟”进行数据统计。这次公司在项目中提出了数据埋点的需求，自己采集使用app人群的数据，自己在后台进行大数据的分析。"><span class="nav-number">1.</span> <span class="nav-text">1.最近公司做了一个关于高端理财的项目，之前一些项目主要是通过第三方“友盟”进行数据统计。这次公司在项目中提出了数据埋点的需求，自己采集使用app人群的数据，自己在后台进行大数据的分析。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-埋点分为页面统计和事件统计，公司为项目中每个页面定义了唯一的pageId-就为了这件事我们和产品争论了很长时间，我们客户端希望我们只传页面对应的类名，然后后台根据数据自己关联。产品又说安卓和iOS的类名可能不一样，所以他们不能统一。我们又给出了方案，我们新增一个字段”type”用来区分是安卓还是iOS，然后你们自己在关联。后来还是胳膊扭不过大腿，pageId传了，”type”也传了。。。干不过那就想办法做吧，页面怎么和pageId关联就成了一个问题，既然一一对应，我就想到了字典，那就写在一个本地plist文件里吧。每次进入页面和离开页面都要去plist去取，也不太合适，我就写了单例，只读取一次plist。但是还要每次去单例里去值，所以后来又想了一个办法，给基类定义一个属性，每次读取到了就保存下来，只要页面没有被销货，每次就不要重新取了，也算是做到了性能方面的优化吧。"><span class="nav-number">2.</span> <span class="nav-text">2.埋点分为页面统计和事件统计，公司为项目中每个页面定义了唯一的pageId,就为了这件事我们和产品争论了很长时间，我们客户端希望我们只传页面对应的类名，然后后台根据数据自己关联。产品又说安卓和iOS的类名可能不一样，所以他们不能统一。我们又给出了方案，我们新增一个字段”type”用来区分是安卓还是iOS，然后你们自己在关联。后来还是胳膊扭不过大腿，pageId传了，”type”也传了。。。干不过那就想办法做吧，页面怎么和pageId关联就成了一个问题，既然一一对应，我就想到了字典，那就写在一个本地plist文件里吧。每次进入页面和离开页面都要去plist去取，也不太合适，我就写了单例，只读取一次plist。但是还要每次去单例里去值，所以后来又想了一个办法，给基类定义一个属性，每次读取到了就保存下来，只要页面没有被销货，每次就不要重新取了，也算是做到了性能方面的优化吧。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-事件统计比较简单，每个事件对应一个事件id-所以只要硬编码定义事件id，在需要加的地方加一下就行了-和友盟的mobClick方法类似。"><span class="nav-number">3.</span> <span class="nav-text">3.事件统计比较简单，每个事件对应一个事件id,所以只要硬编码定义事件id，在需要加的地方加一下就行了,和友盟的mobClick方法类似。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-事件和页面埋点数据都存到本地，达到一定的条数就上传，传完就删除。我也限制了最大存储条数，以防在断网和服务器异常的情况下无限制的往本地存储。"><span class="nav-number">4.</span> <span class="nav-text">4.事件和页面埋点数据都存到本地，达到一定的条数就上传，传完就删除。我也限制了最大存储条数，以防在断网和服务器异常的情况下无限制的往本地存储。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-最后上Demo-github地址"><span class="nav-number">5.</span> <span class="nav-text">5.最后上Demo,github地址</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵琛</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zclemo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
